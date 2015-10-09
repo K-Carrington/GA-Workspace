@@ -1,0 +1,114 @@
+input {
+  width: 33px;
+  padding: 10px;
+}
+.inputLine1 {
+  display:inline-block;
+  margin-top: 10px;
+}
+.inputLine2 {
+  display:inline-block;
+}
+
+#container {
+  width: 500px;
+  height: 600px;
+  text-align: center;
+  margin: auto;
+  border: 5px solid black;
+  font-family: 'Futura', sans-serif;
+  font-weight: 600;
+  background-color: darkgrey;
+  color: darkred;
+  border-radius: 20px
+}
+#main {
+  font-size: 32px;
+  margin-top: 60px;
+}
+.dotLine {
+  border: 2px dashed chartreuse;
+  width: 300px;
+  margin-left: 100px;
+  margin-top: 25px;
+}
+#line3 {
+  margin-top: 30px;
+}
+#tempInC {
+  font-size: 26px;
+  margin-top: 30px;
+}
+#tempInF {
+  font-size: 26px;
+  margin-top: 10px;
+}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Temperature Converter 2000</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div id="container">
+
+    <div id="main">Colin's<br> Temperature<br> Converter 7000™ </div>
+    <div class="dotLine"></div>
+    <div id="tempInC"> 38°C </div>
+
+    <input placeholder="100" class="inputLine1" id="userInput1">
+    <div class="inputLine1">°F</div>
+    <div class="dotLine"></div><br>
+
+    <input placeholder="0" class="inputLine2" id="userInput2">
+    <div class="inputLine2">°C</div>
+    <div id="tempInF"> 32°F </div>
+
+    <button id=clearAll>Clear</button><br>
+    <div class="dotLine" id="line3"></div><br>
+
+
+
+    <!-- <button id="converter">Convert!</button> -->
+
+  <script type="text/javascript">
+    // convertButton = document.querySelector('#converter');
+    userInputA = document.querySelector('#userInput1');
+    tempC = document.querySelector('#tempInC');
+    userInput1.addEventListener('input',function(){
+      temp = userInputA.value;
+      result = Math.round(((temp - 32)/1.8));
+      tempC.innerText = result + "°C";
+      if(isNaN(temp) === true){
+        alert("Whoa dere. Only numbers!")
+      }
+    });
+
+    userInputB = document.querySelector('#userInput2');
+    tempF = document.querySelector('#tempInF');
+    userInput2.addEventListener('input', function(){
+      temp = userInputB.value;
+      result = Math.round((temp * 1.8+32));
+      tempF.innerText = result + "°F";
+      if(isNaN(temp) === true){
+        alert("Whoa dere. Only numbers!")
+        return temp.substr(0,temp.length-1);
+      }
+    });
+
+    clearButton = document.querySelector('#clearAll');
+    clearButton.addEventListener('click',function(){
+      userInputA.value = null;
+      userInputB.value = null
+      tempC.innerText = "38°C";
+      tempF.innerText = "32°F";
+    });
+
+
+    </script>
+
+  </body>
+</html>

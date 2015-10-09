@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+	
+		<title>Blank Template</title>
+		
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<h1>Course Application</h1>
+			</header> 	
+			<form>
+             <label id="yourName">Your name</label>
+             <input type="text" name="firstname" placeholder="First">
+             <input type="text" name="lastname" placeholder="Last">
+            </form>
+
+            <form>
+              <label id="phoneNum">Phone number</label> <!-- label is an inline div-->
+              <input type="text" name="areacode"> - 
+              <input type="text" name="prefix"> - 
+              <input type="text" name="postfix">
+            </form>
+
+            <form>
+              <label id="address">Address</label>
+              <input class="streetAddr" type="text" name="sreet" placeholder="Street Address"><br> 
+              <input class="streetAddr address" type="text" name="street2" placeholder="Address Line 2"><br>
+              <input class="address" type="text" name="city" placeholder="City">
+              <input type="text" name="state" placeholder="State">
+              <input type="text" name="postalcode" placeholder="Postal Code">
+            </form>
+        
+        	<form>
+              Skills and Interests:<br>
+             
+              <label id="course">Course:</label>
+              <select name="select one">
+                <option value="selectone">Select One</option>
+                <option value="webdev">Web Developemnt</option>
+                <option value="frontend">&nbsp;&nbsp;Front-End</option>
+                <option value="backend">&nbsp;&nbsp;Back-End</option>
+                <option value="design">Design</option>
+                <option value="visualdesign">&nbsp;&nbsp;Visual Design</option>
+                <option value="ux">&nbsp;&nbsp;User Experience</option>
+             </select>
+             <option value="" selected>Select One</option>
+             <textarea id="experience"></textarea>
+            </form>
+
+            <form>
+              Anything Else?<br>
+              <label id="referral">Referral:</label>
+              <select name="select one">
+                <option value="none">None</option>
+                <option value="friend">Friend</option>
+                <option value="instructor">Instructor</option>
+                <option value="online">Online</option>
+             </select>
+             <textarea id="comments"></textarea>
+            </form>
+
+
+			<footer>
+			  <button>Save Draft</button>
+              <button>Submit</button>
+			</footer>
+		</div><!-- #container --> 
+	</body>
+</html>

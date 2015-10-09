@@ -1,0 +1,11 @@
+  div {
+    border: 1px solid black; 
+    color:red; 
+    font-size:30px;
+  }
+  div#wdi_rocks {
+  	color: green;
+  }
+  div.pip {
+    font-size:70px;
+  }

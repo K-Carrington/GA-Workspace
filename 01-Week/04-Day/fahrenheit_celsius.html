@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Temp Conv</title>
+</head>
+<body>
+
+	<style>
+#container {
+	text-align: center;
+}
+h1 {
+	padding: 10px;
+}
+#tFahr {
+  margin-bottom: 5px;
+}
+#tCelsius {
+	margin-bottom: 5px;
+}
+
+#t_convert {
+	padding: 10px;
+}
+#t_convert2 {
+	padding: 10px;
+}
+#symbol {
+	display: inline-block;
+	margin-top: 1px;
+}
+#c_to_f {
+	margin-top: 40px;
+}
+
+	</style>
+
+<div id="container">
+	<header>
+		<h1>Temperature Converter</h1>
+	</header> 	
+
+  <div id="f_to_c">
+	<p id="tCelsius">degrees C</p>
+	<form>
+             <input id="tForm" type="text" name="Fahrenheit">
+             <p id="symbol">F</p>
+    </form>
+    
+    <button id="t_convert">Convert to Celsius</button>
+  </div>
+
+  <div id="c_to_f">
+	<p id="tFahr">degrees F</p>
+	<form>
+             <input id="tForm2" type="text" name="Celsius">
+             <p id="symbol">C</p>
+    </form>
+    
+    <button id="t_convert2">Convert to Fahrenheit</button>
+   </div>
+</div>
+
+<script type="text/javascript">
+      var myH1 = document.querySelector("h1");
+      //myH1.innerText = "My DOM Trees"; // changes the h1 text
+//      myH1.style.backgroundColor = "red"
+//      myH1.style.color = "white"
+//      myH1.style.width = "200px";
+
+      var tButton = document.querySelector('#t_convert'); //to access not the 1st one
+
+      var tField = document.querySelector("#tForm");
+      tField.addEventListener('input', function(){
+        console.log("in 1st input callback");
+        var myP = document.querySelector("#tCelsius");
+        myP.innerText = " degrees C";
+      })
+
+      tButton.addEventListener('click', function(){
+      	//myH1.style.backgroundColor = 'blue';
+      var myP = document.querySelector("#tCelsius");
+      
+        // read tForm
+        var form = document.forms[0];
+        var selectElement = form.querySelector('#tForm');
+        var f = selectElement.value; 
+        if (isNaN(f) === true) {
+        	alert("Please enter a valid Fahrenheit number");
+          myP.innerText = " degrees C";
+        	return;
+        }
+
+        // Compute Celsius  
+        var celsius = (f - 32) * 0.555555;
+        celsius = celsius.toFixed(2);
+
+        // write to #tCelsius
+        
+        myP.innerText = celsius + " degrees C"; // changes 1st one by default
+      })
+
+      var tButton2 = document.querySelector('#t_convert2'); //to access not the 1st one
+      
+      var tField2 = document.querySelector("#tForm2");
+      tField2.addEventListener('input', function(){
+        var myP = document.querySelector("#tFahr");
+        myP.innerText = " degrees F";
+      })
+
+      tButton2.addEventListener('click', function(){
+      	//myH1.style.backgroundColor = 'blue';
+      var myP = document.querySelector("#tFahr");
+      
+        // read tForm
+        var form = document.forms[1];
+        var selectElement = form.querySelector('#tForm2');
+        var c = selectElement.value;
+        if (isNaN(c)) {
+        	alert("Please enter a valid Celsius number");
+          myP.innerText = " degrees F"; 
+        	return;
+        }
+
+        // Compute Celsius  
+        var f = (c * 1.8) + 32;
+        f = f.toFixed(2);
+
+        // write to #tFahr
+        myP.innerText = f + " degrees F"; // changes 1st one by default
+      })
+</script>
+</body>
+</html>

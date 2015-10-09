@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Box Model</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div id="container">
+		<div id="square1"><p>1</p></div>
+		<div id="square2"><p>2</p></div>
+		<div id="square3"><p>3</p></div>
+		<div id="square4"><p>4</p></div>
+	</div>
+</body>
+</html>
+
+function is_palindrome (str) {
+    var endi = str.length - 1;
+    var starti = 0;
+	while (true) {
+      if (str[starti++] !== str[endi--]) {
+        return false;
+      }
+      if (endi <= starti) {
+        return true;
+      }
+    }
+}

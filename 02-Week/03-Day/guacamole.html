@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style media="screen">
+    .my-box {
+      border: black 2px solid;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    img {
+    	padding-top: 15px;
+    	padding-left: 5px;
+    	width: 90px;
+    }
+
+    </style>
+    <meta charset="utf-8">
+    <title>Guaca-mole</title>
+  </head>
+  <body>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+  <br>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+  <br>
+
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+
+    <script type="text/javascript">
+      var boxes = document.querySelectorAll('.my-box');
+      var score = 0;
+      //console.log(boxes);
+      var i = null;
+      intervalId = setInterval(function(){
+        if (i !== null) {boxes[i].innerHTML = '';}
+        i = Math.floor((Math.random()) * 9);
+        boxes[i].innerHTML = '<img src="http://thumbs.dreamstime.com/t/mole-vector-illustration-cartoon-42121720.jpg">';
+      }, 3000);
+
+      for (var j=0; j<9; j++) {
+        boxes[j].addEventListener('click', function(){
+          //console.log(this.innerHTML);
+          if (this.innerHTML !== "") {
+      	    score++;
+          }
+          console.log(score);
+        });
+      }
+
+    </script>
+  </body>
+</html>

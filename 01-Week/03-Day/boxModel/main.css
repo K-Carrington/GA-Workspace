@@ -1,0 +1,42 @@
+* { /* * applies styles to everything */
+  /*border: 4px dashed blue;*/
+}
+
+#container {
+	height: 500px;
+	width: 500px;
+	background-color: grey; /* this makes it visible */
+	position: relative; /* (non-static position) unlockes some 
+	                      properties for children*/
+}
+
+#square1 {
+	background-color: red;
+	height: 150px; /* here this finally makes it visible */;
+	width: 200px;
+	margin: 25px;
+	/*display: inline-block;*/ /* gives padding */
+	position: absolute; /* works with parent's position relative */
+  bottom: 0; /* works with parent's position relative */
+  right: 0;  /* """"""" */ 
+}
+#square2 {
+	background-color: #66CC66;
+	height: 150px; /* here this finally makes it visible */;
+	width: 200px;
+	padding: 25px;
+}
+#square3 {
+	background-color: #66CCCC;
+	height: 150px; /* here this finally makes it visible */;
+	width: 200px;
+	border-top: 10px black;
+	display: inline-block;
+}
+#square4 {
+	background-color: #CCFF33;
+	height: 150px; /* here this finally makes it visible */;
+	width: 200px;
+	border-radius: 100px;
+	display: inline-block; /* more than one inline-block makes them into a row */
+}

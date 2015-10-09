@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My DOM</title>
+</head>
+<body>
+	<style>
+	#someDiv p {
+
+	}
+	</style>
+
+  <h1>My Discovery</h1>
+  <button id="make_it_red">Make it red</button>
+  <button id="make_it_green">Make it green</button>
+  <button id="make_it_blue">Make it blue</button>
+  <div id='someDiv'>
+    <p>I learned about the DOM</p>
+    <p>Here is what I learned</p>
+    <img id="img1" src="http://www.w3schools.com/js/pic_htmltree.gif"> 
+    <!-- If image instead then it lines up in the same row -->
+    <img id="img2" src="http://www.woodger.ca/images/dom.gif">
+  </div>
+  <img src="http://www.w3opensource.org/examples/Netscape%20Objects%20Structure2.gif">
+  <script type="text/javascript">
+    var me = { name: "ken",
+      weight: 2,
+      sayName : function() {
+      	console.log("Hello, my name is " + this.name);
+      }}
+      me.sayName();
+
+      var myH1 = document.querySelector("h1");
+      //myH1.innerText = "My DOM Trees"; // changes the h1 text
+      myH1.style.backgroundColor = "red"
+      myH1.style.color = "white"
+      myH1.style.width = "200px";
+
+      var myP = document.querySelector("p");
+      myP.innerText = "Here are some DOM Trees"; // changes 1st one by defaulrt
+
+      var blueButton = document.querySelector('#make_it_blue'); //to access not the 1st one
+      blueButton.addEventListener('click', function(){myH1.style.backgroundColor = 'blue';})
+
+      var greenButton = document.querySelector('#make_it_green'); //to access not the 1st one
+      greenButton.addEventListener('click', function(){myH1.style.backgroundColor = 'green';})
+
+      var redButton = document.querySelector('#make_it_red'); 
+      redButton.addEventListener('click', function(){myH1.style.backgroundColor = 'red';})
+
+      // Selection criteria is just like CSS (see above <style>>:
+      var paragraph = document.querySelector('#someDiv p'); // to slect one
+      var paragraphs = document.querySelectorAll('#someDiv p'); // selects all
+
+      //Next, using a loop iterate through to apply types to all elements
+      //TBD
+
+  </script>
+</body>
+</html>

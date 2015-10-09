@@ -1,0 +1,106 @@
+<html>
+<head>
+	<title>jQuery Intro</title>
+	<style type="text/css">
+		.row {
+			
+		}
+		.cell{
+			height: 150px;
+			width: 150px;	
+			border: 1px solid black;
+			display: inline-block;
+			text-align: center;
+			line-height: 150px;
+			font-size: 50px;
+		}
+		.selected{
+			background-color: red;
+		}
+		.hidden {
+			display: none;
+		}
+	</style>
+
+	<!-- **DOM independent libraries (better to put own functions, etc. in body)** -->
+	<script type="text/javascript" src="jquery-2.1.4.js"></script> 
+	<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	 **This is to get an online jQuery, but using a local copy here
+	 Google's is probably more reliable than CDN(Content Delivery Network aka jquery.com), 
+	 but using local is most...** -->
+</head>
+<body>
+	<h1>Introduction to jQuery</h1>
+
+	<div class='container'>
+		<div class='row' id='row1'>
+			<div class='cell' id='cell1'>1</div>
+			<div class='cell' id='cell2'>2</div>
+			<div class='cell' id='cell3'>3</div>
+		</div>
+		<div class='row' id='row2'>
+			<div class='cell' id='cell4'>4</div>
+			<div class='cell' id='cell5'>5</div>
+			<div class='cell' id='cell6'>6</div>
+		</div>
+		<div class='row' id='row3'>
+			<div class='cell' id='cell7'>bla</div>
+			<div class='cell' id='cell8'>8</div>
+			<div class='cell' id='cell9'>9</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	  for (var i=0; i<9; i++) {
+        console.log($('.cell')[i].id);
+	  }
+
+	  //These return jquery objects (as opposed to html objects)
+
+      // Both these work
+      // each is jQuery's for each
+      $.each($('.cell'), function(){
+        console.log(this.id);
+      });
+	  $(".cell").each(function(index){
+        console.log(index + ": " + this.id);
+      });
+
+
+      $('#cell1').text(); //returns "1"
+
+      // Both of these read the text (content) of the divs
+      $(".cell").each(function(index){
+        console.log($("#cell"+(index+1)).text());
+      });
+      $(".cell").each(function(index){
+        console.log(index + ": " + $(this).text());
+      });
+
+      // To write the text:
+      $('#cell2').text('new cell text');
+      $('#row1 .cell#cell3').text('also new cell text')
+      $('#row1 .cell').text('chg row1');
+      $('.row .cell').text('chg all');
+      $(".cell").each(function(index){
+      	$(this).text("my" + (index+1));
+        console.log(index + ": " + $(this).text());
+      });
+
+      // changing class of elements
+      $('#cell2').attr('class')
+      $('#cell2').addClass('selected')
+      $('#cell2').removeClass('selected')
+      $('#cell2').toggleClass('selected') //does above 2
+      $('#cell4').toggleClass('hidden')
+
+      $('#cell6').hide() //does the same as adding the hidden class
+      $('#cell6').show()
+
+      //Assiging event listeners (instead of native JS:
+      // document.queerySelector('#cell1').addEventListener('click'), function(){console.log(this)})
+      $('#cell3').on('click', function(){console.log($(this))})
+
+	</script>
+</body>
+</html>

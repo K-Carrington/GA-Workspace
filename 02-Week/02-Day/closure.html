@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style media="screen">
+    .my-box {
+    border: black 2px solid;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    </style>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <div class="my-box">
+      <!-- <img src="pic.jpg" /> -->
+    </div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+  <br>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+  <br>
+
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+
+    <script type="text/javascript">
+      var boxes = document.querySelectorAll('.my-box');
+      console.log(boxes);
+
+      function setupClick(element, index) {
+        element.addEventListener('click', function(){ //this function has a closure on index
+          console.log('I am index: ' + index);
+        })
+      }
+      for (var i=0; i<boxes.length; i++) {
+        setupClick(boxes[i], i);
+      }
+      
+      boxes[4].addEventListener('click', function(){
+        console.log('I am the center');
+      });
+
+    </script>
+  </body>
+</html>

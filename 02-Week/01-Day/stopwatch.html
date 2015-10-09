@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My Digital Watch</title>
+  <style media="screen">
+    div {
+      height: 100px;
+      width: 100px;
+      background-color: purple;
+    }
+  </style>
+</head>
+<body>
+  <h1>Time goes here</h1>
+  <h2></h2>
+  <h3></h3>
+  <div></div>
+  <div></div>
+  <div></div>
+  <button id="stop-time">Start/Stop</button>
+  <script type="text/javascript">
+    var myH1 = document.querySelector("h1");
+    var myH2 = document.querySelector("h2");
+    var myH3 = document.querySelector("h3");
+    var myButton = document.querySelector('#stop-time');
+    var start = true;
+    var intervalId;
+
+    myButton.addEventListener('click', function(){
+      if (start === false) {
+    	myH2.innerText = "Time has stoppped";
+    	window.clearInterval(intervalId);
+    	start = true;
+      }
+      else {
+      	myH2.innerText = '';
+        intervalId = setInterval(function(){
+          var today = new Date(); 
+    	  var milliseconds = today.getMilliseconds();
+          var ms = milliseconds.toString();
+    	  var ms = ms.split("");
+
+          // slice(-2) gives last 2 characters of a string
+    	  var hours = ('0' + today.getHours()).slice(-2); 
+    	  var min = ('0' + today.getMinutes()).slice(-2);
+    	  var sec = ('0' + today.getSeconds()).slice(-2);
+    	  myH1.innerText = hours + ":" + min + ":" + sec  + ":" + ms[0];
+    	  myH3.innerText = Date();
+        }, 100);
+        start = false;
+      }
+    });
+
+    var divs = document.querySelectorAll("div");
+    for (var i = 0; i < divs.length; i++) {
+      divs[i].addEventListener('click', function(){console.log(this)});
+    }
+
+
+  </script>
+</body>
+</html>
