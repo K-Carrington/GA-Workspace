@@ -1,0 +1,95 @@
+this	Refers to the function's execution context
+function	Defines a function expression
+[]	Array initializer/literal syntax.
+{}	Object initializer/literal syntax.
+/ab+c/i	Regular expression literal syntax.
+( )	Grouping operator.
+Property accessors	"<div>Member operators provide access to a property or method of an object</div><div>(object.property and object[""property""]).</div>"
+new	Creates an instance of a constructor.
+A++	Postfix increment operator.
+A--	Postfix decrement operator.
+++A	Prefix increment operator.
+--A	Prefix decrement operator.
+delete	The delete operator deletes a property from an object.
+void	The void operator discards an expression's return value.
+typeof	The typeof operator determines the type of a given object.
++	The unary plus operator converts its operand to Number type.
+-	<div>The unary negation operator converts its operand to Number type and then negates it.</div>
+"<span style=""font-family: Arial"">~</span>"	<div>Bitwise NOT operator.</div>
+!	Logical NOT operator.
+in	The in operator determines whether an object has a given property.
+instanceof	The instanceof operator determines whether an object is an instance of another object.
+Block	Used to group zero or more statements. The block is delimited by a pair of curly brackets.
+break	Terminates the current loop, switch, or label statement and transfers program control to the statement following the terminated statement.
+continue	Terminates execution of the statements in the current iteration of the current or labeled loop, and continues execution of the loop with the next iteration.
+Empty	An empty statement is used to provide no statement, although the JavaScript syntax would expect one.
+if...else	Executes a statement if a specified condition is true. If the condition is false, another statement can be executed.
+switch	Evaluates an expression, matching the expression's value to a case clause, and executes statements associated with that case.
+throw	Throws a user-defined exception.
+try...catch	Marks a block of statements to try, and specifies a response, should an exception be thrown.
+var	Declares a variable, optionally initializing it to a value.
+do...while	Creates a loop that executes a specified statement until the test condition evaluates to false. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.
+for	Creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a statement executed in the loop.
+for...in	Iterates over the enumerable properties of an object, in arbitrary order. For each distinct property, statements can be executed.
+while	Creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.
+Infinity	The global Infinity property is a numeric value representing infinity.
+"<span style=""font-family: Arial"">Representing Not-A-Number.</span>"	NaN
+This&nbsp;value property represents the value undefined.	undefined
+"JavaScript literal representing null or an ""empty"" value, i.e. no object value is present."	null
+Evaluates JavaScript code represented as a string.	eval()
+"<span style=""font-family: Arial"">Determines whether the passed value is a finite number. If needed, the parameter is first converted to a number.</span>"	isFinite()
+Determines whether a value is NaN or not.	isNaN()
+Parses a string argument and returns a floating point number.	parseFloat()
+Parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).	parseInt()
+Decodes a Uniform Resource Identifier (URI) previously created by encodeURI or by a similar routine.	decodeURI()
+Decodes a Uniform Resource Identifier (URI) component previously created by encodeURIComponent or by a similar routine.	decodeURIComponent()
+"Encodes a Uniform Resource Identifier (URI) by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two ""surrogate"" characters)."	encodeURI()
+"Encodes a Uniform Resource Identifier (URI) component by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two ""surrogate"" characters)."	encodeURIComponent()
+The&nbsp;constructor creates an object wrapper.	Object
+Allows the addition of properties to all objects of type Object.	Object.prototype
+Creates a new object with the specified prototype object and properties.	Object.create()
+Adds the named property described by a given descriptor to an object.	Object.defineProperty()
+Adds the named properties described by the given descriptors to an object.	Object.defineProperties()
+Freezes an object: other code can't delete or change any properties.	Object.freeze()
+Returns a property descriptor for a named property on an object.	Object.getOwnPropertyDescriptor()
+Returns an array containing the names of all of the given object's own enumerable and non-enumerable properties.	Object.getOwnPropertyNames()
+Returns the prototype of the specified object.	Object.getPrototypeOf()
+Determines if extending of an object is allowed.	Object.isExtensible()
+Determines if an object was frozen.	Object.isFrozen()
+Determines if an object is sealed.	Object.isSealed()
+Returns an array containing the names of all of the given object's own enumerable properties.	Object.keys()
+Prevents any extensions of an object.	Object.preventExtensions()
+Prevents other code from deleting properties of an object.	Object.seal()
+Specifies the function that creates an object's prototype.	Object.prototype.constructor
+Returns a boolean indicating whether an object contains the specified property as a direct property of that object and not inherited through the prototype chain.	Object.prototype.hasOwnProperty()
+Returns a boolean indication whether the specified object is in the prototype chain of the object this method is called upon.	Object.prototype.isPrototypeOf()
+Returns a boolean indicating if the internal ECMAScript DontEnum attribute is set.	Object.prototype.propertyIsEnumerable()
+Calls toString().	Object.prototype.toLocaleString()
+Returns a string representation of the object.	Object.prototype.toString()
+Returns the primitive value of the specified object.	Object.prototype.valueOf()
+new Function ([arg1[, arg2[, ...argN]],] functionBody)	The Function constructor creates a new Function object. In JavaScript every function is actually a Function object.
+Specifies the number of arguments expected by the function.	Function.length
+Applies the method of another object in the context of a different object (the calling object); arguments can be passed as an Array object.	Function.prototype.apply()
+Creates a new function which, when called, itself calls this function in the context of the provided value, with a given sequence of arguments preceding any provided when the new function was called.	Function.prototype.bind()
+Calls (executes) a method of another object in the context of a different object (the calling object); arguments can be passed as they are.	Function.prototype.call()
+Returns a string representing the source code of the function. Overrides the Object.prototype.toString method.	Function.prototype.toString()
+new Boolean([value])	The Boolean object is an object wrapper for a boolean value.
+Creates a JavaScript Date instance that represents a single moment in time. Date objects are based on a time value that is the number of milliseconds since 1 January, 1970 UTC.	Date
+This&nbsp;JavaScript object is a wrapper object allowing you to work with numerical values. A Number object is created using the Number() constructor.	Number
+This is a built-in object that has properties and methods for mathematical constants and functions. Not a function object.	Math
+Creates a JavaScript Date instance that represents a single moment in time.	Date
+The String global object is a constructor for strings, or a sequence of characters.	String
+The RegExp constructor creates a regular expression object for matching text with a pattern.	"<span style=""font-family: 'Liberation Sans'"">RegExp</span>"
+The JavaScript Array global object is a constructor for arrays, which are high-level, list-like objects.	Array
+The Int8Array typed array represents an array of twos-complement 8-bit signed integers. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Int8Array</span>"
+The Uint8Array typed array represents an array of 8-bit unsigned integers. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Uint8Array</span>"
+The Uint8ClampedArray typed array represents an array of 8-bit unsigned integers clamped to 0-255. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Uint8ClampedArray</span>"
+The Int16Array typed array represents an array of twos-complement 16-bit signed integers in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Int16Array</span>"
+The Uint16Array typed array represents an array of 16-bit unsigned integers in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Uint16Array</span>"
+The Int32Array typed array represents an array of twos-complement 32-bit signed integers in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Int32Array</span>"
+The Uint32Array typed array represents an array of 32-bit unsigned integers in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Uint32Array</span>"
+The Float32Array typed array represents an array of 32-bit floating point numbers (corresponding to the C float data type) in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Float32Array</span>"
+The Float64Array typed array represents an array of 64-bit floating point numbers (corresponding to the C double data type) in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).	"<span style=""font-family: 'Liberation Sans'"">Float64Array</span>"
+The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer. You can not directly manipulate the contents of an ArrayBuffer; instead, you create one of the typed array objects or a DataView object which represents the buffer in a specific format, and use that to read and write the contents of the buffer.	"<span style=""font-family: 'Liberation Sans'"">ArrayBuffer</span>"
+The DataView view provides a low-level interface for reading data from and writing it to an ArrayBuffer.	"<span style=""font-family: 'Liberation Sans'"">DataView</span>"
+The JSON object contains methods for parsing JavaScript Object Notation (JSON) and converting values to JSON. It can't be called or constructed, and aside from its two method properties it has no interesting functionality of its own.	"<span style=""font-family: 'Liberation Sans'"">JSON</span>"

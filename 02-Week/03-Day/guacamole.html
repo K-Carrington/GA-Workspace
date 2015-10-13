@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <style media="screen">
     .my-box {
       border: black 2px solid;
@@ -16,44 +17,71 @@
     	width: 90px;
     }
 
+    .display {
+      width: 300px;
+      height: 50px;
+      font-size: 36px;
+      margin-top: 40px;
+      text-align: center;
+      margin: 0 auto;
+    }
+
     </style>
     <meta charset="utf-8">
     <title>Guaca-mole</title>
   </head>
   <body>
-    <div class="my-box"></div>
-    <div class="my-box"></div>
-    <div class="my-box"></div>
-  <br>
-    <div class="my-box"></div>
-    <div class="my-box"></div>
-    <div class="my-box"></div>
-  <br>
+    <div class="display" id="elapsed-time"></div>
 
     <div class="my-box"></div>
     <div class="my-box"></div>
     <div class="my-box"></div>
+    <br>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <br>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+    <div class="my-box"></div>
+
+    <div class="display" id="score"></div>
 
     <script type="text/javascript">
-      var boxes = document.querySelectorAll('.my-box');
-      var score = 0;
+      var game = {score: 0, ellapsedTime: 0};
+
+      //var boxes = document.querySelectorAll('.my-box');
+      var boxes = $('.my-box');
       //console.log(boxes);
       var i = null;
+      elapsedTime_id = setInterval(function(){
+        game.ellapsedTime++;
+        $('#elapsed-time').text("Elapsed time: " + game.ellapsedTime);
+      }, 1000);
+
       intervalId = setInterval(function(){
         if (i !== null) {boxes[i].innerHTML = '';}
         i = Math.floor((Math.random()) * 9);
-        boxes[i].innerHTML = '<img src="http://thumbs.dreamstime.com/t/mole-vector-illustration-cartoon-42121720.jpg">';
-      }, 3000);
+        //boxes[i].innerHTML = '<img src="http://thumbs.dreamstime.com/t/mole-vector-illustration-cartoon-42121720.jpg">';
+        $(boxes[i]).html('<img src="http://thumbs.dreamstime.com/t/mole-vector-illustration-cartoon-42121720.jpg">');
+      }, 1700);
 
-      for (var j=0; j<9; j++) {
-        boxes[j].addEventListener('click', function(){
+      //$('.my-box').click(function(){
+      boxes.on('click', function(){ 
+      //for (var j=0; j<9; j++) {
+        //boxes[j].addEventListener('click', function(){
           //console.log(this.innerHTML);
-          if (this.innerHTML !== "") {
-      	    score++;
+          //if (this.innerHTML !== "") {
+          if ($(this).html() !== "") {
+      	    game.score++;
+            // this.innerHTML = '<img src="http://www.clker.com/cliparts/D/Q/D/3/0/J/bam-md.png">';
+            $(this).html('<img src="http://www.clker.com/cliparts/D/Q/D/3/0/J/bam-md.png">');
+            // $(this).text('boom!'); //This will overwrite the above image
           }
-          console.log(score);
+          //console.log(game.score);
+          $('#score').text("Score: " + game.score);
         });
-      }
+      //}
 
     </script>
   </body>

@@ -19,12 +19,12 @@ Developer @GA in NYC
 
 /* Clear fix hack */
 .clearfix:after {
-     content: ".";
-     display: block;
-     clear: both;
-     visibility: hidden;
-     line-height: 0;
-     height: 0;
+ content: ".";
+ display: block;
+ clear: both;
+ visibility: hidden;
+ line-height: 0;
+ height: 0;
 }
 
 .clear {
@@ -46,10 +46,10 @@ Developer @GA in NYC
 /*******************************************/
 
 body {
-     color: #000;
-     font-size: 12px;
-     line-height: 1.4;
-     font-family: Helvetica, Arial, sans-serif;
+  color: #000;
+  font-size: 12px;
+  line-height: 1.4;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 
@@ -72,11 +72,11 @@ body {
 }
 
 header {
-      text-align: center;
-      color: white;
-      background: url(../images/header_bg.jpg) no-repeat center top rgb(134,141,157);
-      height: 370px;
-      background-size: cover;
+  text-align: center;
+  color: white;
+  background: url(../images/header_bg.jpg) no-repeat center top rgb(134,141,157);
+  height: 300px;
+  background-size: cover;
 }
 #headrelaxr {
   font-size: 24px;
@@ -85,10 +85,13 @@ header {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
 .benefits_section {
   padding: 30px;
-  margin-left: 70px;
-  margin-right: 70px;
+
+  background-color: #f0efef;
+  width: 100%;
+  margin: auto; /* centers */
 }
 h2 {
   font-size: 24px;
@@ -102,7 +105,7 @@ h2 {
 }
 
 #getitnowbutton {
-  background: yellow;
+  background: #f9e42e;
   padding: 5px;
   width: 130px;
   border-radius: 5px;
@@ -111,12 +114,16 @@ h2 {
 }
 #benefits {
   font-size: 20px;
+  font-weight: 600;
 }
 .benefits_description {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 300;
   padding: 5px;
+  margin-left: 10px;
+  margin-right: 70px;
 }
+
 li {
   padding: 2px;
 }
@@ -125,14 +132,16 @@ article {
   background-size: cover;
   color: white;
   background: url(../images/testimonial_bg.jpg);
-  height: 200px;
-  font-size: 18px;
+  font-size: 14px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 #article_descr {
-    margin-left: 120px;
-    margin-right: 120px;
-    font-weight: 300;
-    padding-top: 20px;
+  margin-left: 120px;
+  margin-right: 120px;
+  font-weight: 300italic;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 #signature {
   font-weight: 600;
@@ -140,25 +149,24 @@ article {
 #signup {
   text-align: center;
   background-size: cover;
-
   padding: 10px;
-  background: yellow;
+  background: #f9e42e;
 }
 #signupnow_button {  
   text-align: center;
-  background: blue;
+  background: #033048;
   color: white;
   padding: 5px;
   width: 130px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 footer {
   text-align: center;
-  color: yellow;
-  background: black;
+  color: #f9e42e;
+  background: #121212;
 }
 #footerrelaxr {
   font-size: 24px;
@@ -170,7 +178,7 @@ img {
   padding: 10px;
 }
 h6 {
-  color: white;
+  color: #606161;
   font-size: 9px;
   font-weight: 600;
   padding: 20px;

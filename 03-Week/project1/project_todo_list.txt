@@ -1,0 +1,35 @@
+Flash-card Challenge GA-Project-1 to do:
+
+Get Started
+-Break the project down into different components (data, presentation, views, style, DOM manipulation) and brainstorm each component individually. Use whiteboards!
+-Use your Development Tools (console.log, inspector, alert statements, etc) to debug and solve problems
+-Work through the lessons in class & ask questions when you need to! Think about adding relevant code to your game each night, instead of, you know... procrastinating.
+-Commit early, commit often. Don’t be afraid to break something because you can always go back in time to a previous version.
+-Consult documentation resources (MDN, jQuery, etc.) at home to better understand what you’ll be getting into.
+-Don’t be afraid to write code that you know you will have to remove later. Create temporary elements (buttons, links, etc) that trigger events if real data is not available. For example, if you’re trying to figure out how to change some text when the game is over but you haven’t solved the win/lose game logic, you can create a button to simulate that until then.
+
+-v-wireframe
+-.-html
+-v-user story As a [role], when I [context], I want to [goal], So that I can [benefit/purpose]
+	0. As a player, when I bring up the app I want to read a brief description so that I know how to 	play.
+	1. As a player, when I bring up the app I want to select the number of cards until the game is 		complete so that it plays for the amount of effort/time that I want to dedicate.
+	2. As a player I want to enter the names of the players, a deck for each player and a time limit 	for each player so that the game will be tailored to the ability of each player.
+	3. As a player I want to be able to be able to alternate players, read each player’s decks question 	and click directly on the answer so that the game moves along at a good rate.
+	4. …I want to see the result of my answer attempt as well as a tracking of the score so that I know 	where I stand,
+	4.2 …I want a reset button so that I can play again in one session
+	4.3 …I want to prevent duplicate and previous cards from coming up in any given session so that 	it’s more challenging
+	5. …I want to see the final result so that I know how I did and who won.
+	6. …I want the font to change based on string length so that I can see the whole question or answer
+—v-classes/methods —> UML
+- -put html and outline of CSS and JS in repo
+- -CSS, see ideas.txt
+- -TDD/code (hardcode deck data in .js file for now)
+test)
+- -Make responsive
+
+
+Later todo:
+—Select more decks to read in
+—Convert other Q/A formats to anki deck format
+—Read binary (if can find format info, see decks.wikia.com/wiki/Anki_APKG_format_documentation
+—Convert
