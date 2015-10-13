@@ -1,52 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style media="screen">
-  body {
-    text-align: center;
-      margin: 0 auto;
-  }
-
-  .form-row {
-    margin: 20px;
-  }
-  .player_name {
-    height: 16px;
-  }
-  
-   .q_item {
-      border: black 2px solid;
-      width: 400px;
-      height: 100px;
-      font-size: 12px;
-      text-align: center;
-      margin: 0 auto;
-      /*display: inline-block;*/
-      vertical-align: top;
-      list-style: none;
-    }
-  #card_items {
-    margin-left: 50px;
-  }
-  .card_item {
-      border: black 2px solid;
-      width: 400px;
-      height: 100px;
-      font-size: 12px;
-      float: left;
-      /*display: inline-block;*/
-    }
-    .card_item br  {
-      display: none;
-    } /* To get rid of these tags from the input data */
-    /*.card_item table {display: none;} */
-
-  .card_title {
-    float: left;
-    font-size: 20px;
-  }
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="flash_card_challenge.css">
   <meta charset="utf-8">
 	<title>Flash Card Challenge</title>
 	<meta charset="utf-8">
@@ -59,12 +14,13 @@
   Two players select their own flashcard deck and time limit. An advanced player can compete against a beginner, a computer person can compete against a Japanese student...
   <p>Select number of cards for next game, then click next: </p>
   <select class="dropdown" id="num_cards">
-	  <!--TBD How to do color here?-->
+
+    <!-- THIS CAN TO ONLY BE UP TO n where ((MIN DECK LENGTH - n*2) - 3) -->
     <option value="1">1</option>
     <option value="2">2</option>
-    <option value="3">3</option>
+    <!-- <option value="3">3</option>
     <option value="4">4</option>
-    <!-- <option value="num_c13">5</option>
+    <option value="num_c13">5</option>
     <option value="num_c14">6</option>
     <option value="num_c14">7</option>
     <option value="num_c14">8</option> -->
@@ -101,11 +57,9 @@
     <div class="form-row">
       <label>Player 1 Time Limit</label>
       <select class="dropdown" id="time_limit1">
-        <!--TBD How to do color here?-->
-        <option value="2">2 secs</option>
         <option value="4">4 secs</option>
-        <option value="6">6 secs</option>
         <option value="8">8 secs</option>
+        <option value="12">12 secs</option>
         <!-- <option value="num_c13">5</option>
         <option value="num_c14">6</option>
         <option value="num_c14">7</option>
@@ -137,11 +91,9 @@
     <div class="form-row">
       <label>Player 2 Time Limit</label>
       <select class="dropdown" id="time_limit2">
-        <!--TBD How to do color here?-->
-        <option value="2">2 secs</option>
         <option value="4">4 secs</option>
-        <option value="6">6 secs</option>
         <option value="8">8 secs</option>
+        <option value="12">12 secs</option>
         <!-- <option value="num_c13">5</option>
         <option value="num_c14">6</option>
         <option value="num_c14">7</option>
@@ -156,28 +108,28 @@
 
 <div id="main_screen">
   <div class="display" id="elapsed-time">elapsed time here</div>
-  <div id"player">Player 1 name here</div>
+  <div id="player">Player name here</div>
   <div class="q_item">
     <p class="card_title">Question:</p>
     <div  id="question">Q</div>
   </div>
 
   <div id="card_items">
-  <div class="card_item">
+  <div class="multi_answers" id='a1'>
     <p class="card_title">A1:</p>
-    <div class="multi_answers" id="answer1">A1</div>
+    <div id="answer1">A1</div>
   </div>
-  <div class="card_item">
+  <div class="multi_answers" id='a2'>
     <p class="card_title">A2:</p>
-    <div class="multi_answers" id="answer2">A2</div>
+    <div id="answer2">A2</div>
   </div>
-  <div class="card_item">
+  <div class="multi_answers" id='a3'>
     <p class="card_title">A3:</p>
-    <div class="multi_answers" id="answer3">A3</div>
+    <div id="answer3">A3</div>
   </div>
-  <div class="card_item">
+  <div class="multi_answers" id='a4'>
     <p class="card_title">A4:</p>
-    <div class="multi_answers" id="answer4">A4</div>
+    <div id="answer4">A4</div>
   </div>
   </div>
   <div id="card_result"></div>
@@ -194,20 +146,20 @@
 
 <script>
 // Deck class (object constructor function)
-  var Deck = function(name, diff_level, format, location) {
-    this.name = name;
-    this.difficulty = diff_level;
-    this.format = format;
-    this.location = location;
-  }
-  var decks = [];
-  //TBD later put deck info from load_flash_card_data into here
+var Deck = function(name, diff_level, format, location) {
+  this.name = name;
+  this.difficulty = diff_level;
+  this.format = format;
+  this.location = location;
+}
+var decks = [];
+//TBD later put deck info from load_flash_card_data into here
 
 var cs_deck_str = 'CS';
 var js1_deck_str = 'JS1';
 var js2_deck_str = 'JS2';
 var nk5_deck_str = 'N5K';
-//TBD set deck dropdowns with above strings
+// set deck dropdowns with above strings
 
 var card_deck = {};
 card_deck[cs_deck_str] = Computer_Sci;
@@ -215,7 +167,8 @@ card_deck[js1_deck_str] = Javascript1_cards;
 card_deck[js2_deck_str] = JS2_Sivers;
 card_deck[nk5_deck_str] = JLPT_Kanji_N5;
 
-/*  $('#question').html(Javascript1_cards[0][0]);
+/* How deck data is loaded into <div>:
+  $('#question').html(Javascript1_cards[0][0]);
   $('#answer1').html(Javascript1_cards[1][1]);
   $('#answer2').html(Javascript1_cards[0][1]);
   $('#answer3').html(Javascript1_cards[2][1]);
@@ -241,16 +194,29 @@ card_deck[nk5_deck_str] = JLPT_Kanji_N5;
 
   // Starts out with all major divs at display:none / hide except for the first one. 
   // Screens are transitioned by display:none-ing other screens
-  $('#player_setup_screen').hide();
-  $('#main_screen').hide();
-  $('#game_result_screen').hide();
-
 
   var whos_turn = 1;
   var player1 = {};
   var player2 = {};
   var game = {};
   var game_result = {};
+  var picked_q_cards = {};
+
+  function setup_new_game() {
+    $('#player_setup_screen').hide();
+    $('#main_screen').hide();
+    $('#game_result_screen').hide();
+    $('#intro_screen').show();
+    picked_q_cards = {};
+    whos_turn = 1;
+    //player1 = {};
+    //player2 = {};
+    //game = {};
+    //game_result = {};
+    player1.points_scored = 0;
+    player2.points_scored = 0;
+  }
+  setup_new_game();
 
   // Game class (object constructor function)
   var Game = function () {
@@ -259,85 +225,152 @@ card_deck[nk5_deck_str] = JLPT_Kanji_N5;
     this.introGame = function() {
       $('#to_2nd_screen_button').click(function(){
         number_of_cards = $('#num_cards').val();
-       // num.split('');
-       // this.number_of_cards = num[5];
         console.log("num cards = " + number_of_cards);
         $('#intro_screen').hide();
         $('#player_setup_screen').show();
       });
     }
 
-    var picked_cards = {};
+    // local fucntion
+    function display_q_and_answers(player) {
+      //  randomly select card, save to not re-display, display it with it's answer and 3 other randomly selected answers randomly distributed.
+      var curr_deck;
+      if (player === 1) {
+        console.log("player 1 chosen_deck = " + player1.getChosenDeck());
+        curr_deck = card_deck[player1.getChosenDeck()];
+      }
+      else {
+        console.log("player 2 chosen_deck = " + player2.getChosenDeck());
+        curr_deck = card_deck[player2.getChosenDeck()];
+      }
+      //console.log("curr deck 1 length = " + curr_deck.length);
+
+      // pick with random (1..num cards)
+      // keep list of cards already done, (TBD?)bail if tried deck-length(?) times,
+      // or better: ***keep min deck length (the number of cards in game * 2) + 3
+      var i = Math.floor((Math.random()) * curr_deck.length);
+      console.log("rand i = " + i);
+      while (picked_q_cards[i]) {
+        i = Math.floor((Math.random()) * curr_deck.length);
+        console.log("rand i = " + i); 
+      }
+      picked_q_cards[i] = true;
+        
+      var j = Math.floor((Math.random()) * 4); //to randomly place correct answer
+      console.log("rand j = " + j);
+
+      // loop 3 times to find unique cards that haven't been used for questions and to 
+      // also keep them uniqe for this round of answers
+      var picked_a_cards = {};
+      var x = Math.floor((Math.random()) * curr_deck.length); //to select a wrong ans
+      console.log("rand x = " + x);
+      while (picked_q_cards[x] || picked_a_cards[x]) {
+        x = Math.floor((Math.random()) * curr_deck.length);
+        console.log("rand x = " + x);
+      }
+      picked_a_cards[x] = true;
+
+      var y = Math.floor((Math.random()) * curr_deck.length); //to select a wrong ans
+      console.log("rand y = " + y);
+      while (picked_q_cards[y] || picked_a_cards[y]) {
+        y = Math.floor((Math.random()) * curr_deck.length);
+        console.log("rand y = " + y);
+      }
+      picked_a_cards[y] = true;
+
+      var z = Math.floor((Math.random()) * curr_deck.length); //to select a wrong ans
+      console.log("rand z = " + z);
+      while (picked_q_cards[z] || picked_a_cards[z]) {
+        z = Math.floor((Math.random()) * curr_deck.length);
+        console.log("rand z = " + z);
+      }
+
+      var a,b,c,d;
+      switch (j) { //scramble correct answer with others'
+          case 0:
+            a = i; b = x; c = y; d = z;
+            break;
+          case 1:
+            a = x; b = i; c = y; d = z;
+            break;
+          case 2:
+            a = x; b = y; c = i; d = z;
+            break;
+          case 3:
+            a = x; b = y; c = z; d = i;
+            break;
+          default:
+            console.log("***ERROR*** random j not 0..3!!!")
+        }
+        
+        // TBD change font depending on string length
+
+        $('#question').html(curr_deck[i][0]);
+        $('#answer1').html(curr_deck[a][1]);
+        $('#answer2').html(curr_deck[b][1]);
+        $('#answer3').html(curr_deck[c][1]);
+        $('#answer4').html(curr_deck[d][1]);
+
+      return j;
+    } // display_q_and_answers
 
     this.playGame = function() {
       console.log("In playGame fun");
-      // TBD play game alternating users
-    // TBD randomly select card, save to not re-display, display it with it's answer and 3 other randomly selected answers randomly distributed.
-    console.log("player 1 chosen_deck = " + player1.getChosenDeck());
-    console.log("num of cards = " + number_of_cards);
-      var curr_deck1 = card_deck[player1.getChosenDeck()];
-      console.log("curr deck 1 length = " + curr_deck1.length);
-      if (whos_turn === 1) {
-        // pick with random (1..num cards)
-        //TBD keep list of cards already done, TBD bail if tried deck-length(?) times
-        var i = Math.floor((Math.random()) * curr_deck1.length);
-        console.log("rand i = " + i);
-        while (picked_cards[i]) {
-          var i = Math.floor((Math.random()) * curr_deck1.length);
-          console.log("rand i = " + i); 
-        }
-        picked_cards[i] = true;
+      // play game alternating users starting with player 1
+      $('#player').text(player1.getName() + " Number of Points: " + player1.points_scored);
+      var correct_a_index = display_q_and_answers(1);
+      var card_count = 1; //will have already gone through first round by incr time
 
-        //TBD loop to find unique cards
-        var j = Math.floor((Math.random()) * 4); //to randomly place correct answer
-        console.log("rand j = " + j);
-        var x = Math.floor((Math.random()) * curr_deck1.length); //to select a wrong ans
-        console.log("rand x = " + x);
-        var y = Math.floor((Math.random()) * curr_deck1.length); //to select a wrong ans
-        console.log("rand y = " + y);
-        var z = Math.floor((Math.random()) * curr_deck1.length); //to select a wrong ans
-        console.log("rand z = " + z);
-        var a,b,c,d;
-        switch (j) { //scramble correct answer with others'
-            case 0:
-              a = i; b = x; c = y; d = z;
-              break;
-            case 1:
-              a = x; b = i; c = y; d = z;
-              break;
-            case 2:
-              a = x; b = y; c = i; d = z;
-              break;
-            case 3:
-              a = x; b = y; c = z; d = i;
-              break;
-            default:
-              console.log("***ERROR*** random j not 0..3!!!")
-        }
-        
-        $('#question').html(curr_deck1[i][0]);
-        $('#answer1').html(curr_deck1[a][1]);
-        $('#answer2').html(curr_deck1[b][1]);
-        $('#answer3').html(curr_deck1[c][1]);
-        $('#answer4').html(curr_deck1[d][1]);
-      }
-      //TBD
-
-      // TBD set-up answer handlers
-      // remove and reset this for every j (correct answer)
+      // *answer handler*
       $('.multi_answers').click(function(){
         console.log("Box " + this.id + " clicked!");
+        
+        //get clicked on answer
+        var box_idx = this.id;
+        var tmp = box_idx.split('');
+        box_idx = tmp[1] - 1;
   
-        if (whos_turn === 1) {
-         /* switch (player1.chosen_deck) {
-            case '':
-            break;
-          }*/
+        console.log("chosen ans = " + box_idx + ", correct ans = " + correct_a_index);
+        if (box_idx === correct_a_index) {
+          // add a point for player whos_turn(== 1 or 2) !
+          if (whos_turn === 1) {
+            player1.points_scored++;
+          }
+          else {
+            player2.points_scored++;
+          }
         }
-    
-        // TBD display card result
-        // TBD if number of cards done display game result (go to 4th screen)
-      });
+        else { // player is wrong
+          //do nothing
+        }
+
+        // TBD display card result with popup? or add a field somewhere
+
+        // if number of cards done display game result (go to 4th screen)
+        if (whos_turn === 2 && (card_count == number_of_cards)) {
+          console.log("p1 pts = " + player1.points_scored + ", p2 pts = " + player2.points_scored);
+          game_result.player1_pts = player1.points_scored;
+          game_result.player2_pts = player2.points_scored;
+          $('#main_screen').hide();
+          $('#game_result_screen').show();
+          game_result.displayWinner();
+        }
+        else {
+          if (whos_turn === 1) {
+            whos_turn = 2;
+            $('#player').text(player2.getName() + " Number of Points: " + player2.points_scored);
+            correct_a_index = display_q_and_answers(whos_turn);
+          }
+          else { // player 2 just went
+            card_count++;
+            whos_turn = 1;
+            $('#player').text(player1.getName() + " Number of Points: " + player1.points_scored);
+            correct_a_index = display_q_and_answers(whos_turn);
+          }
+        }
+
+      }); // answer handler
+
     } //play_game function
 
   } // Game class obj constructor function
@@ -346,7 +379,6 @@ card_deck[nk5_deck_str] = JLPT_Kanji_N5;
   // Set up 1st screen button event handler to log number of cards selected and go to 2nd screen
   game.introGame();
   
-
 
   // Player class (object constructor function)
   var Player = function (player_num) { 
@@ -359,8 +391,8 @@ card_deck[nk5_deck_str] = JLPT_Kanji_N5;
       $('#to_3rd_screen_button').click(function(){
         chosen_deck = $('#deck'+player_num).val();
         name = $('#player_name'+player_num).val();
-        this.chosen_time = $('#time_limit'+player_num).val();
-        console.log("Player " + player_num + " chosen deck = " + chosen_deck + ", name = " + name + ", time lim = " + this.chosen_time);
+        chosen_time = $('#time_limit'+player_num).val();
+        console.log("Player " + player_num + " chosen deck = " + chosen_deck + ", name = " + name + ", time lim = " + chosen_time);
         $('#player_setup_screen').hide();
         $('#main_screen').show();
         if (player_num === 2) { //only want to call this once
@@ -389,7 +421,6 @@ card_deck[nk5_deck_str] = JLPT_Kanji_N5;
   player1.setupPlayer();
   player2.setupPlayer();
   
- 
 
   // Result class (object constructor function)
   var Result = function() {
@@ -397,20 +428,31 @@ card_deck[nk5_deck_str] = JLPT_Kanji_N5;
     this.player1_pts = 0;
     this.player2_pts = 0;
     this.displayWinner = function() {
-      $('.game_result').html('Winner is ' + this.winner + "!");
-      //TBD also display points
+      //console.log("In displayWinner, p1\'s " + this.player1_pts + ", p2\'s " + this.player2_pts)
+      if (this.player1_pts > this.player2_pts) {
+        this.winner = player1.getName() + " wins!";
+      }
+      else if (this.player1_pts < this.player2_pts) {
+         this.winner = player2.getName() + " wins!";
+      }
+      else {
+        this.winner = "A Tie!";
+      }
+      $('#game_result').html('Results: ' + this.winner + " (" + 
+        player1.getName() + ": " + this.player1_pts + " " +
+        player2.getName() + ": " + this.player2_pts + ")");
     }
    
-
-    //TBD set up #new_game_button press callback
-  }
-
-   game_result = new Result();
-  
-  // TBD set-up new game button handler
+    // set-up new game button handler, zero/reset everything...
+    $('#new_game_button').click(function(){
+      console.log("new_game_button clicked");
+      $(".multi_answers").off('click');
+      setup_new_game();
+    });
+  } // Result class obj constructor function
+  game_result = new Result();
 
 </script>
-
 
 </body>
 </html>

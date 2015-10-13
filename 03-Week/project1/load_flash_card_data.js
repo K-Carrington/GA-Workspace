@@ -1,3 +1,11 @@
+
+//
+// Keep min deck length = (the max number of cards in game * 2) + 3 so as to have enough cards
+// (e.g.: for max num cards = 2, min deck length must be 7;
+//        for max num cards = 4, min deck length must be 11;
+//        for max num cards = 10, min deck len must be 23;
+//        for max num cards = 20, mun deck len must be 43; ...
+//
 var JLPT_Kanji_N5 = [];
 JLPT_Kanji_N5[0] = ['<span class=""kanji"">口</span><br><br><br><br><br><br>', 
 '<div class=""conjug""><br><table><br><tr><br><th></th><br><th><span class=""on"">音読み</th><br><th><span class=""kun"">訓読み</th><br></tr><br><br><tr><br><th></th><br><td><span class=""on"">く</span></td><br><td><span class=""kun"">くち</span></td><br></tr><br><br><tr><br><th><br><br></table></div><br><br><b>mouth</b>'];

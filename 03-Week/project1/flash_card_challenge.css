@@ -1,0 +1,106 @@
+/* TBD colerise from Palet from http://www.colourlovers.com/palette/867235/LoversInJapan
+bright reddish #E94E77 question
+light darker reddish #D68189 answers
+light reddish brown #C6A49A player name
+light blueish green #C6E5D9 timer
+off white / tan #F4EAD5  all b/g */
+
+body {
+    text-align: center;
+      margin: 0 auto;
+      background-color: #F4EAD5;
+  }
+  #player_setup_screen {
+  	display: none;
+  }
+
+  .form-row {
+    margin: 20px;
+  }
+  .player_name {
+    height: 16px;
+  }
+
+  #main_screen {
+  	display: none;
+  }
+  .display {
+  	background-color: #C6E5D9;
+    font-size: 20px;
+    min-height: 32px;
+  }
+  #player {
+  	background-color: #C6A49A;
+    font-size: 24px;
+    min-height: 40px;
+  }
+  
+  .q_item {
+     border: black 2px solid;
+     background-color: #E94E77;
+     width: 400px;
+     height: 100px;
+     font-size: 12px;
+     text-align: center;
+     margin: 0 auto;
+     /*display: inline-block;*/
+     vertical-align: top;
+     list-style: none;
+  }
+  #card_items {
+    margin-left: 50px;
+  }
+  .multi_answers {
+      border: black 2px solid;
+      background-color: #D68189;
+      width: 400px;
+      height: 100px;
+      font-size: 12px;
+      float: left;
+      /*display: inline-block;*/
+    }
+    .multi_answers br  {
+      display: none;
+    } /* To get rid of these tags from the input data */
+    /*.card_item table {display: none;} */
+
+  .card_title {
+    float: left;
+    font-size: 20px;
+  }
+
+  #game_result_screen {
+  	display: none;
+    font-size: 20px;
+    min-height: 100px;
+  }
+  #new_game_button {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 857px) {
+ .q_item {
+ 	  border: black 2px solid;
+      background-color: #E94E77;
+      width: 400px;
+      height: 100px;
+      font-size: 12px;
+      float: left;
+      margin-left: 50px;
+  }
+  @media (min-width: 858px) {
+  	.q_item {
+      border: black 2px solid;
+      background-color: #E94E77;
+      width: 400px;
+      height: 100px;
+      font-size: 12px;
+      text-align: center;
+      margin: 0 auto;
+      /*display: inline-block;*/
+      vertical-align: top;
+      list-style: none;
+    }
+  }
+
+
