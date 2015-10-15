@@ -6,15 +6,16 @@
 //myDataRef.set({name: name, text: text}); //write an obj (dict/hash)
 //myDataRef.push({name: name, text: text}); //to build a list/array of obj's
 
-// Deck class (object constructor function)
+// Deck class (object constructor function) fior future functionality
+// (Using card_deck object now)
+// later put deck info from load_flash_card_data into here or use firebase
+// or some other data source
 var Deck = function(name, diff_level, format, location) {
   this.name = name;
   this.difficulty = diff_level;
   this.format = format;
   this.location = location;
 }
-var decks = [];
-//TBD later put deck info from load_flash_card_data into here
 
 var cs_deck_str = 'CS';
 var linux_deck_str = 'LNX';
@@ -24,6 +25,8 @@ var js2_deck_str = 'JS2';
 var vim_deck_str = "VIM";
 var nk5_deck_str = 'N5K';
 var nk5_flip_deck_str = 'N5K_FLIP';
+var nk4_deck_str = 'N4K';
+var nk4_flip_deck_str = 'N4K_FLIP';
 // set deck dropdowns with above strings
 
 var card_deck = {};
@@ -39,6 +42,9 @@ card_deck[vim_deck_str] = Vim;
 card_deck[nk5_deck_str] = N5_Kanji;
 card_deck[nk5_flip_deck_str] = flip(N5_Kanji);
 
+card_deck[nk4_deck_str] = N4_Kanji;
+card_deck[nk4_flip_deck_str] = flip(N4_Kanji);
+
 function flip(a_deck){
   var temp = [];
   console.log("In flip a deck length = " + a_deck.length);
@@ -47,19 +53,6 @@ function flip(a_deck){
   }
   return temp;
 }
-
-/* How deck data is loaded into <div>:
-  $('#question').html(Javascript1_cards[0][0]);
-  $('#answer1').html(Javascript1_cards[1][1]);
-  $('#answer2').html(Javascript1_cards[0][1]);
-  $('#answer3').html(Javascript1_cards[2][1]);
-  $('#answer4').html(Javascript1_cards[3][1]);
-  
-  $('#question').html(JS2_Sivers[0][0]);
-  $('#answer1').html(JS2_Sivers[1][1]);
-  $('#answer2').html(JS2_Sivers[0][1]);
-  $('#answer3').html(JS2_Sivers[2][1]);
-  $('#answer4').html(JS2_Sivers[3][1]); */
 
   // Starts out with all major divs at display:none / hide except for the first one. 
   // Screens are transitioned by display:none-ing other screens
@@ -111,13 +104,13 @@ function flip(a_deck){
     // local function
     // change font depending on string length
     function set_font_size_based_on_strlen(str, dom_elem) {
-      if (str.length < 30) {
+      if (str.length < 25) {
         $(dom_elem).css('fontSize', '30px');
       }
-      else if (str.length < 80) {
+      else if (str.length < 50) {
         $(dom_elem).css('fontSize', '24px');
       }
-      else if (str.length < 130) {
+      else if (str.length < 110) {
         $(dom_elem).css('fontSize', '18px');
       }
      else {
@@ -153,9 +146,14 @@ function flip(a_deck){
         return;
       }
 
-      // pick with random (1..num cards)
-      // keep list of cards already done, (TBD?)bail if tried deck-length(?) times,
-      // or better: ***keep min deck length (the number of cards in game * 2) + 3
+      // pick random (1..num cards)
+      // keep list of cards already done, 
+      // keep min deck length (the number of cards in game * 2) + 3
+      //
+      // loop 3 times to find unique cards that haven't been used for questions and to 
+      // also keep them uniqe for this round of answers
+      //
+      // i is index of correct q/a card
       var i = Math.floor((Math.random()) * curr_deck.length);
       console.log("rand i = " + i);
       while (picked_q_cards[i]) {
@@ -164,11 +162,11 @@ function flip(a_deck){
       }
       picked_q_cards[i] = true;
         
-      var j = Math.floor((Math.random()) * 4); //to randomly place correct answer
+      //j is to randomly place the correct answer
+      var j = Math.floor((Math.random()) * 4); 
       console.log("rand j = " + j);
 
-      // loop 3 times to find unique cards that haven't been used for questions and to 
-      // also keep them uniqe for this round of answers
+      // find 3 unused wrong answer cards
       var picked_a_cards = {};
       var x = Math.floor((Math.random()) * curr_deck.length); //to select a wrong ans
       console.log("rand x = " + x);
@@ -264,7 +262,7 @@ function flip(a_deck){
       console.log("In next_player, card_count = " + card_count + ", number_of_cards = "
         + number_of_cards);
       if (whos_turn === 2 && (card_count == number_of_cards)) {
-        console.log("p1 pts = " + player1.points_scored + ", p2 pts = " + player2.points_scored);
+        //console.log("p1 pts = " + player1.points_scored + ", p2 pts = " + player2.points_scored);
         game_result.player1_pts = player1.points_scored;
         game_result.player2_pts = player2.points_scored;
         $('#main_screen').hide();
@@ -280,14 +278,13 @@ function flip(a_deck){
         else { // player 2 just went
           card_count++;
           whos_turn = 1;
-          $('#player').text(player1.getName() + "'s turn (" + player2.getChosenDeck() + ")");
+          $('#player').text(player1.getName() + "'s turn (" + player1.getChosenDeck() + ")");
           correct_a_index = display_q_and_answers(whos_turn);
         }
       }
     }
 
     this.playGame = function() {
-      console.log("In playGame fun");
       // play game alternating users starting with player 1
       $('#p1_progress_text').text(player1.getName());
       $('#p2_progress_text').text(player2.getName());
@@ -304,7 +301,7 @@ function flip(a_deck){
           return;
         }
         player_transition = true;
-        console.log("Box " + this.id + " clicked!");
+        //console.log("Box " + this.id + " clicked!");
         
         // stop timer
         clearInterval(elapsedTime_id);
@@ -314,29 +311,26 @@ function flip(a_deck){
         var tmp = box_idx.split('');
         box_idx = tmp[1] - 1;
   
-        console.log("chosen ans = " + box_idx + ", correct ans = " + correct_a_index);
+        //console.log("chosen ans = " + box_idx + ", correct ans = " + correct_a_index);
         // * display card result *
         if (box_idx === correct_a_index) {
-          // add a point for player whos_turn(== 1 or 2) !
-          
-          //alert("Correct answer!");
+          // add a point for player
           if (whos_turn === 1) {
             player1.points_scored++;
             $('#p1_progress_text').text(player1.getName() + " is Correct!");
             var p1_progress_height = (player1.points_scored / number_of_cards) * 400;
-            console.log("p1 prog height = " + p1_progress_height);
+            //console.log("p1 prog height = " + p1_progress_height);
             $('#player1_progress').height(p1_progress_height);
           }
           else {
             player2.points_scored++;
             $('#p2_progress_text').text(player2.getName() + " is Correct!");
             var p2_progress_height = (player2.points_scored / number_of_cards) * 400;
-            console.log("p1 prog height = " + p1_progress_height);
+            //console.log("p1 prog height = " + p1_progress_height);
             $('#player2_progress').height(p2_progress_height);
           }
         }
         else { // player is wrong
-          //alert("Sorry, that\'s not it");
           if (whos_turn === 1) {
             $('#p1_progress_text').text(player1.getName() + " is Wrong");
           }
@@ -344,10 +338,9 @@ function flip(a_deck){
             $('#p2_progress_text').text(player2.getName() + " is Wrong");
           }
         }
-
          next_player();
-
       }); // answer handler
+
     } //play_game function
   } // Game class obj constructor function
   game = new Game();
@@ -367,6 +360,9 @@ function flip(a_deck){
       $('#to_3rd_screen_button').click(function(){
         chosen_deck = $('#deck'+player_num).val();
         name = $('#player_name'+player_num).val();
+        if (name === '') {
+          name = "Player_"+player_num;
+        }
         chosen_time = $('#time_limit'+player_num).val();
         console.log("Player " + player_num + " chosen deck = " + chosen_deck + ", name = " 
           + name + ", time lim = " + chosen_time);

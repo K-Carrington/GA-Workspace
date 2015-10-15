@@ -2,12 +2,16 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="flash_card_challenge.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
   <meta charset="utf-8">
 	<title>Flash Card Challenge</title>
 	<meta charset="utf-8">
 	<!-- <link rel="stylesheet" type="text/css" href="">  -->
 </head>
+
 <body>
+<div id='wrapper'>
 <h1>Flash Card Challenge</h1>
 
 <div id="intro_screen">
@@ -22,11 +26,12 @@
     <option value="4">4</option>
     <option value="5">5</option>
     <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
     <!-- <option value="num_c14">7</option>
     <option value="num_c14">8</option> -->
   </select> 
   <button id="to_2nd_screen_button">Next</button>
-
 </div> <!-- end intro screen -->
 
 <div id="player_setup_screen">
@@ -53,7 +58,8 @@
         <optgroup label="Japanese">
           <option value="N5K">N5 Kanji</option>
           <option value="N5K_FLIP">N5 Kanji Flipped</option>
-        <!--  <option>N4 Kanji</option> -->
+          <option value="N4K">N4 Kanji</option>
+          <option value="N4K_FLIP">N4 Kanji Flipped</option>
         </optgroup>
       </select>
     </div>
@@ -88,7 +94,8 @@
         <optgroup label="Japanese">
           <option value="N5K">N5 Kanji</option>
           <option value="N5K_FLIP">N5 Kanji Flipped</option>
-        <!--  <option>N4 Kanji</option> -->
+          <option value="N4K">N4 Kanji</option>
+          <option value="N4K_FLIP">N4 Kanji Flipped</option>
         </optgroup>
       </select>
     </div>
@@ -109,47 +116,52 @@
 
 
 <div id="main_screen">
-  <div class="display" id="elapsed-time">elapsed time here</div>
-  <div id="player">Player name here</div>
-  <div class="q_item">
-    <p class="card_title">Q:</p>
-    <div  id="question">Q</div>
+  <div id='card_area'>
+    <div class="display" id="elapsed-time">elapsed time here</div>
+    <div id="player">Player name here</div>
+    <div id="card_items">
+      <div class="q_item">
+        <p class="card_title">Q:</p>
+        <div  id="question">Q</div>
+      </div>
+      <div class="multi_answers" id='a1'>
+        <p class="card_title">A1:</p>
+        <div id="answer1">A1</div>
+      </div>
+      <div class="multi_answers" id='a2'>
+        <p class="card_title">A2:</p>
+        <div id="answer2">A2</div>
+      </div>
+      <div class="multi_answers" id='a3'>
+        <p class="card_title">A3:</p>
+        <div id="answer3">A3</div>
+      </div>
+      <div class="multi_answers" id='a4'>
+        <p class="card_title">A4:</p>
+        <div id="answer4">A4</div>
+      </div>
+    </div>
   </div>
 
-  <div id="card_items">
-    <div class="multi_answers" id='a1'>
-      <p class="card_title">A1:</p>
-      <div id="answer1">A1</div>
+  <div id="progress_area">
+    <div class="progress_areas" id="p1_name">
+      <div id="p1_progress_text"></div>
+      <div class="player_progress" id="player1_progress"></div>
     </div>
-    <div class="multi_answers" id='a2'>
-      <p class="card_title">A2:</p>
-      <div id="answer2">A2</div>
-    </div>
-    <div class="multi_answers" id='a3'>
-      <p class="card_title">A3:</p>
-      <div id="answer3">A3</div>
-    </div>
-    <div class="multi_answers" id='a4'>
-      <p class="card_title">A4:</p>
-      <div id="answer4">A4</div>
+    <div class="progress_areas" id="p2_name">
+      <div id="p2_progress_text"></div>
+      <div class="player_progress" id="player2_progress"></div>
     </div>
   </div>
-
-  <div class="progress_area" id="p1_name">
-    <div id="p1_progress_text"></div>
-    <div class="player_progress" id="player1_progress"></div>
-  </div>
-  <div class="progress_area" id="p2_name">
-    <div id="p2_progress_text"></div>
-    <div class="player_progress" id="player2_progress"></div>
-  </div>
-
 </div> <!-- end main screen -->
+
+
 
 <div id="game_result_screen">
   <div id="game_result"></div>
   <button id="new_game_button">New Game</button>
 </div> <!-- end result screen -->
+</div> <!--wrapper-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>

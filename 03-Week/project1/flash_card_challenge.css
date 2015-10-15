@@ -1,15 +1,23 @@
-/* TBD colerise from Palet from http://www.colourlovers.com/palette/867235/LoversInJapan
+/* TBD colerize from Palet from http://www.colourlovers.com/palette/867235/LoversInJapan
 bright reddish #E94E77 question
 light darker reddish #D68189 answers
 light reddish brown #C6A49A player name
 light blueish green #C6E5D9 timer
 off white / tan #F4EAD5  all b/g */
 
-body {
+  body {
     text-align: center;
-      margin: 0 auto;
-      background-color: #F4EAD5;
+    margin: 0 auto;
+    background-image: url('stacked_circles_@2x.png'); /*from subtle patters site (transparant pngs) */
+    background-color: #F4EAD5;
+    font-family: 'Lato', sans-serif;
   }
+
+  #wrapper {
+    width: 700px;
+    display: inline-block;
+  }
+
   #player_setup_screen {
   	display: none;
   }
@@ -21,7 +29,7 @@ body {
     height: 16px;
   }
 
-  #main_screen {
+  #main_screen  {
   	display: none;
   }
   .display {
@@ -41,17 +49,20 @@ body {
      width: 400px;
      height: 80px;
      font-size: 12px;
-     text-align: center;
+     float: left;
+    /* text-align: center;
      margin: 0 auto;
-     /*display: inline-block;*/
      vertical-align: top;
-     list-style: none;
+     list-style: none; */
   }
   .q_item br {
     display: none;
   }
   #card_items {
-    margin-left: 50px;
+    margin-left: 75px;
+    display: inline-block;
+    width: 400px;
+    float: left;
   }
   .multi_answers {
       border: black 2px solid;
@@ -70,10 +81,20 @@ body {
     float: left;
     font-size: 20px;
   }
+  
+  #card_area {
+    max-width: 700px;
+    font-family: 'Libre Baskerville', serif;
+  }
+  #progress_area {
+     float: left;
+     margin-top: 0px;
+     margin-left: 10px;
+  }
 
-  .progress_area {
+  .progress_areas {
     border: black 2px solid;
-    height: 440px;
+    height: 417px;
     width: 60px;
     background-color: #C6E5D9;
     display: inline-block;
@@ -88,6 +109,12 @@ body {
     bottom: 0;
   }
 
+  #p1_progress_text, #p2_progress_text {
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+  }
+
   #game_result_screen {
   	display: none;
     font-size: 20px;
@@ -97,7 +124,8 @@ body {
     margin-top: 20px;
   }
 
-  @media (max-width: 857px) {
+/*
+  @media (max-width: 990px) {
  .q_item {
  	  border: black 2px solid;
       background-color: #E94E77;
@@ -107,7 +135,8 @@ body {
       float: left;
       margin-left: 50px;
   }
-  @media (min-width: 858px) {
+  
+  @media (min-width: 991px) {
   	.q_item {
       border: black 2px solid;
       background-color: #E94E77;
@@ -116,10 +145,9 @@ body {
       font-size: 12px;
       text-align: center;
       margin: 0 auto;
-      /*display: inline-block;*/
       vertical-align: top;
       list-style: none;
     }
-  }
+  }*/
 
 
