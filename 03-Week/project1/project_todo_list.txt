@@ -22,15 +22,15 @@ Get Started
 	6. …I want the font to change based on string length so that I can see the whole question or answer
 —v-classes/methods —> UML
 -.-put html and outline of CSS and JS in repo
-- -CSS, see ideas.txt
+-.-CSS, see ideas.txt
 
-- -TDD/code (hardcode deck data in .js file for now)
+-.-TDD/code (hardcode deck data in .js file for now)
 test)
-- -Make responsive
+-v-Make responsive
 
 
 Later todo:
-—Select more decks to read in
+-.-Select more decks to read in
 —Convert other Q/A formats to anki or this program readable deck format
 —Read binary (if can find format info, see decks.wikia.com/wiki/Anki_APKG_format_documentation or ***see Anki source code(in Python?) on github***
 —Write code to automatically convert decks to this program readable format 

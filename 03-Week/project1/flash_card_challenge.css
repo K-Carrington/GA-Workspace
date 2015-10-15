@@ -39,13 +39,16 @@ body {
      border: black 2px solid;
      background-color: #E94E77;
      width: 400px;
-     height: 100px;
+     height: 80px;
      font-size: 12px;
      text-align: center;
      margin: 0 auto;
      /*display: inline-block;*/
      vertical-align: top;
      list-style: none;
+  }
+  .q_item br {
+    display: none;
   }
   #card_items {
     margin-left: 50px;
@@ -54,10 +57,9 @@ body {
       border: black 2px solid;
       background-color: #D68189;
       width: 400px;
-      height: 100px;
+      height: 80px;
       font-size: 12px;
       float: left;
-      /*display: inline-block;*/
     }
     .multi_answers br  {
       display: none;
@@ -67,6 +69,23 @@ body {
   .card_title {
     float: left;
     font-size: 20px;
+  }
+
+  .progress_area {
+    border: black 2px solid;
+    height: 440px;
+    width: 60px;
+    background-color: #C6E5D9;
+    display: inline-block;
+    position: relative;
+  }
+
+  .player_progress {
+    max-height: 400px;
+    width: 60px;
+    background-color: #C6A49A;
+    position: absolute;
+    bottom: 0;
   }
 
   #game_result_screen {
