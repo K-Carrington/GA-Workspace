@@ -21,10 +21,10 @@ Get Started
 	5. …I want to see the final result so that I know how I did and who won.
 	6. …I want the font to change based on string length so that I can see the whole question or answer
 —v-classes/methods —> UML
--.-put html and outline of CSS and JS in repo
--.-CSS, see ideas.txt
+-v-put html and outline of CSS and JS in repo
+-v-CSS, see ideas.txt
 
--.-TDD/code (hardcode deck data in .js file for now)
+-v-TDD/code (hardcode deck data in .js file for now)
 test)
 -v-Make responsive
 

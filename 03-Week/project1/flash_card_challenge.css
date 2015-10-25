@@ -8,7 +8,7 @@ off white / tan #F4EAD5  all b/g */
   body {
     text-align: center;
     margin: 0 auto;
-    background-image: url('stacked_circles_@2x.png'); /*from subtle patters site (transparant pngs) */
+    background-image: url('./stacked_circles_@2x.png'); /*from subtle patterns site (transparant pngs) */
     background-color: #F4EAD5;
     font-family: 'Lato', sans-serif;
   }

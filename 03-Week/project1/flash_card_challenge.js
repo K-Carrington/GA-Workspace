@@ -27,6 +27,12 @@ var nk5_deck_str = 'N5K';
 var nk5_flip_deck_str = 'N5K_FLIP';
 var nk4_deck_str = 'N4K';
 var nk4_flip_deck_str = 'N4K_FLIP';
+var nk3_deck_str = 'N3K';
+var nk3_flip_deck_str = 'N3K_FLIP';
+var nk2_deck_str = 'N2K';
+var nk2_flip_deck_str = 'N2K_FLIP';
+var nk1_deck_str = 'N1K';
+var nk1_flip_deck_str = 'N1K_FLIP';
 // set deck dropdowns with above strings
 
 var card_deck = {};
@@ -45,9 +51,18 @@ card_deck[nk5_flip_deck_str] = flip(N5_Kanji);
 card_deck[nk4_deck_str] = N4_Kanji;
 card_deck[nk4_flip_deck_str] = flip(N4_Kanji);
 
+card_deck[nk3_deck_str] = N3_Kanji;
+card_deck[nk3_flip_deck_str] = flip(N3_Kanji);
+
+card_deck[nk2_deck_str] = N2_Kanji;
+card_deck[nk2_flip_deck_str] = flip(N2_Kanji);
+
+card_deck[nk1_deck_str] = N1_Kanji;
+card_deck[nk1_flip_deck_str] = flip(N1_Kanji);
+
 function flip(a_deck){
   var temp = [];
-  console.log("In flip a deck length = " + a_deck.length);
+  //console.log("In flip a deck length = " + a_deck.length);
   for (var i = 0; i < a_deck.length; i++) {
     temp[i] = [a_deck[i][1], a_deck[i][0]];
   }
@@ -230,8 +245,8 @@ function flip(a_deck){
         // ** reset timeout **
         elapsedTime_id = setInterval(function(){
           elapsedTime++;
-          $('#elapsed-time').text("Elapsed time: " + elapsedTime + " time limit: " 
-              + time_limit);
+          $('#elapsed-time').text("Elapsed time: " + elapsedTime + " (time limit: " 
+              + time_limit + ")");
           if (elapsedTime === time_limit-1) {
             $('#answer1').fadeOut(1000);
             $('#answer2').fadeOut(1000);
@@ -364,8 +379,8 @@ function flip(a_deck){
           name = "Player_"+player_num;
         }
         chosen_time = $('#time_limit'+player_num).val();
-        console.log("Player " + player_num + " chosen deck = " + chosen_deck + ", name = " 
-          + name + ", time lim = " + chosen_time);
+        //console.log("Player " + player_num + " chosen deck = " + chosen_deck + ", name = " 
+        //  + name + ", (time limit = " + chosen_time + ")");
         // error-->reset if no deck is chosen
         $('#player_setup_screen').hide();
         $('#main_screen').show();

@@ -1,0 +1,13 @@
+<h1>Welcome to Brennan's Pub</h1>
+<p>Home of Turtle Racing!</p>
+
+<% @turtles.each do |t| %>
+<h4><%= t[:name] %></h4>
+<ul>
+ <li>Age: <%= t[:age] %></li>
+  <li>Speed: <%= t[:speed] %></li>
+  <li>Breed: <%= t[:breed] %></li>
+  <li>Record: <%= t[:record] %></li> 
+</ul>
+<% end %>
+

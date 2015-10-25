@@ -1,0 +1,11 @@
+Flash-card Challenge GA-Project-1 User Stories
+
+1. As a player, when I bring up the app I want to read a brief description so that I know how to play.
+2. As a player, when I bring up the app I want to select the number of cards until the game is complete so that it plays for the amount of effort/time that I want to dedicate.
+3. As a player I want to enter the names of the players, a deck for each player and a time limit for each player so that the game will be tailored to the ability of each player.
+4. As a player I want to be able to be able to alternate players, read each player’s deck's question and click directly on the answer so that the game moves along at a good rate.
+5. …I want to see the result of my answer attempt as well as a tracking of the score so that I know where I stand,
+6. …I want a reset button so that I can play again in one session
+7. …I want to prevent duplicate and previous cards from coming up in any given session so that it’s more challenging
+8. …I want to see the final result so that I know how I did and who won.
+9. …I want the font to change based on string length so that I can see the whole question or answer)
