@@ -36,6 +36,9 @@ while n.to_s.length > 1
 	n = sum
 end
 return n
+---OR---
+TBD look up map and reduce
+sum = n.to_s.split('').map{|n| n.tail}.reduce{|sum,n| sum+n}
 =end
 
 is_it = ex_oh("xoxo")

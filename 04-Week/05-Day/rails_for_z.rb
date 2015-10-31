@@ -12,3 +12,7 @@ Zombie.order(:name) # orders by name
 z = Zombie.find(3)
 z.graveyard = "Benny Hills Memorial"
 z.save
+
+#to destroy based in id
+Zombie.destroy(3)
+
