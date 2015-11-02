@@ -1,5 +1,41 @@
 Rails.application.routes.draw do
+
+  root "users#index"
   resources :users, only: [:new, :index, :create, :show, :edit, :update, :destroy]
+  get 'login', to: 'sessions#new'
+  resources :sessions, only: [:new, :create, :destroy]
+  delete "/logout", to: "sessions#destroy"
+
+
+
+  get 'users/show'
+
+  get 'users/new'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/destroy'
+
+
+ get 'puns/index'
+
+  get 'puns/show'
+
+  get 'puns/new'
+
+  get 'puns/create'
+
+  get 'puns/edit'
+
+  get 'puns/update'
+
+  get 'puns/destroy'
+
+  
   
   get 'votes/create'
 
@@ -17,33 +53,9 @@ Rails.application.routes.draw do
 
   get 'translations/destroy'
 
-  get 'puns/index'
+ 
 
-  get 'puns/show'
 
-  get 'puns/new'
-
-  get 'puns/create'
-
-  get 'puns/edit'
-
-  get 'puns/update'
-
-  get 'puns/destroy'
-
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

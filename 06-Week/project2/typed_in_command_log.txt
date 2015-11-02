@@ -66,7 +66,7 @@ p1….
 p1.save
 OR
 Load seeds.rb with Pun.create….
-#rake db:reload  # to erase and re-load seed data
+#rake db:reset # to drop the whole Database and re-seed data
 user_1 = User.create({name: "Admin", email: "admin@admin.com", password: "password",
 	password_confirmation: "password", is_admin: true, rank: 10, num_points: 100,
 	native_language: "English"})
@@ -75,19 +75,131 @@ user_2 = User.create({name: "Test", email: "test@test.com", password: "test",
 	password_confirmation: "test", is_admin: false, rank: 0, num_points: 0,
 	native_language: "Japanese"})
 
-pun_1 = Pun.create({pun: "", rating: 0, language: "Japanese", user_id: user_2.user_id})
+pun_1 = Pun.create({pun: "Suika wa yasuika", rating: 0, language: "Japanese", 
+	user_id: user_2.id})
 
-pun_2 = Pun.create({pun: "", rating: 4, language: "English", user_id: user_1.user_id})
+pun_2 = Pun.create({pun: "I wasn't originally going to get a brain transplant, but then I changed my mind.", 
+	rating: 4, language: "English", user_id: user_1.id})
 
-translation_1 = Translation.create({language: "English", translated_pun: "", 
-	comments: "", user_id: user_2.user_id, pun_id: pun_1.pun_id})
+translation_1 = Translation.create({language: "English", translated_pun: "Are watermelons cheap?", 
+	comments: "Makes Japanese people laugh", user_id: user_2.id, pun_id: pun_1.id})
 
-vote_1 = ({pun_id: pun_1.pun_id, user_id: user_1.user_id})
-vote_1 = ({pun_id: pun_2.pun_id, user_id: user_2.user_id})
-vote_1 = ({pun_id: pun_2.pun_id, user_id: user_2.user_id})
+vote_1 = ({pun_id: pun_1.id, user_id: user_1.id})
+vote_1 = ({pun_id: pun_2.id, user_id: user_2.id})
+vote_1 = ({pun_id: pun_2.id, user_id: user_2.id})
+
+
+rails g controller sessions new create destroy
+
+In routes:
+root "users#index"
+resources :users, only: [:new, :index, :create]
+get 'login', to: 'sessions#new'
+resources :sessions, only: [:new, :create, :destroy]
+
+In sessions_controller.rb
+def create
+  user = User.find_by_email(params[:email])
+  if user && user.authenticate(params[:password])
+     session[:user_id] = user.id
+    redirect_to root_path, notice: "logged in!"
+  else
+   flash.now.alert = "invalid login credentials"
+   render "new"
+  end
+
+def destroy
+  redirect_to root_url, notice: "logged out!"
+
+In applications_controller.rb:
+helper_method :current_user
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in?
+    !!current_user
+  end
+
+In layouts/application.html.erb
+TBD before of after yield??????
+<% if current_user %>
+  <p> hello, <%= current_user.email %> </p>
+  <%= link_to 'Logout', sessions_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+<% else %>
+  <%= link_to 'Please login', login_path %>
+<% end %>
+
+In sessions_controller.rb destroy funtion add as 1st line:
+session[:user_id] = nil
+
+add to routes.rb.:
+delete "/logout", to: “sessions#destroy"
+
+And update the view to be:
+**TBD which view? delete?
+<%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+Update application.html.erb logout line:
+<%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+In "views/users/index.html.erb":
+<h1> Users index </h1>
+<% @users.each do |user|%>
+  <%= user.email %>
+  <%= user.password_digest %>
+<% end %>
+
+Check http://localhost:3000/users
+
+In "views/users/new.html.erb":
+<h1>Sign Up</h1>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %> # check for errors in the submitted data
+  <div class="error_messages">
+    <h2>Form is invalid</h2>
+    <ul>
+      <% for message in @user.errors.full_messages %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+In “app/views/layouts/application.html.erb”, at the top of our body section, add:
+<% flash.each do |name, message| %>
+  <div class="flash-message flash-message-<%= name %>">
+    <%= message %>
+  </div>
+<% end %>
+
+rake db:seed (or rake db:reset)
+
+*Copy from restful_craigslist_authentication_sessions
+sessions/new.html.erb
+updated users/new…
 
 
 BOOKMARK
+*Test data in rails c
+
 Setup controller .rb and view .html.rb
 use <%= link_to ‘displayed verbiage’, routes_path %>
 
