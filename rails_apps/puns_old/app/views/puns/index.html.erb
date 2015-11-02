@@ -1,0 +1,16 @@
+<h1>Oyaji Gyagu / Dull Puns Page</h1>
+
+<a href="puns" data-method="create">
+  	<div>Add a new pun</div></a>
+
+<% @puns.each_with_index do |p, i| %>
+<h3><%= p[:pun] %></h3>
+
+<ul>
+  <li><a href="/puns/<%=i%>"> Person who said: <%= p[:person_responsible] %></a></li>
+  <li>Laugh Level: <%= p[:laugh_level] %></li>
+  
+  	<a href="/puns/<%=i%>" data-method="delete">
+  	<div>Delete</div></a>
+</ul>
+<% end %>

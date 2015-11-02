@@ -1,0 +1,10 @@
+<h1>Puns3#new</h1>
+<p>Find me in app/views/puns3/new.html.erb</p>
+
+<%= form_for @new_pun do |p| %>
+  <%= p.label(:pun) %>
+  <%= p.text_field(:pun) %>
+  <%= p.label(:laugh_level) %>
+  <%= p.text_field(:laugh_level) %>
+  <%= p.submit('Add') %>
+<%end%>

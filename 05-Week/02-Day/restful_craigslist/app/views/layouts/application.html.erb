@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RestfulCraigslist</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+
+	<!-- NAV GOES HERE TBD -->
+
+
+	<div>
+	<% if current_user # can show or block stuff based on this %>
+	  <%= link_to 'Log Out', logout_path, method: :delete %>
+	<% else %>
+	  <%= link_to 'Log In', login_path %>
+	<% end %>
+	</div>
+
+  <%= yield %>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1>Users</h1>
+  <p>Welcome to WDI's clone of Twit</p>
+  <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more</a></p>
+</div>
+
+<ul class="list-unstyled">
+<% @users.each do |u| %>
+  <li>
+  	<a href="/users/<%=u.id%>">
+  	  <span class="glyphicon glyphicon-user padded-icon"><%= u.username %></span>
+  	</a>
+  </li>
+
+<%end%>
+</ul>

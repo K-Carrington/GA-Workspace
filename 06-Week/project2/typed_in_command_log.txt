@@ -1,0 +1,98 @@
+rails new pun_translations -T; cd pun_translations; subl .
+
+gem ‘bcrypt’ (line 27 of Gem file, uncomment it out)
+bundle install
+
+rails g model User name email password_digest is_admin:boolean rank:integer num_points:integer native_language
+
+rails g model Pun pun:text rating:integer language
+rails g model Vote
+rails g model Translation language translated_pun:text comments:text
+
+rake db:create
+rake db:migrate:status
+rake db:migrate
+
+In app/models/user.rb :
+class User < ActiveRecord::Base
+ has_secure_password
+ validates :email, presence: true, uniqueness: true
+
+rails g controller users index show new create edit update destroy
+rails g controller puns index show new create edit update destroy
+rails g controller translations index new create edit update destroy
+rails g controller votes create destroy
+
+In users_controller.rb":
+class UsersController < ApplicationController
+ def index
+  @users = User.all
+ end
+
+ def new
+  @user = User.new
+ end
+
+ def create
+  @user = User.new user_params
+  if @user.save
+   redirect_to users_path
+  else
+   render 'new'
+  end
+ end
+
+ private
+   def user_params
+    params.require(:user).permit( :email, :password, :password_confirmation)
+   end
+
+In "config/routes.rb":
+resources :users, only: [:new, :index, :create, :show, :edit, :update, :destroy]
+
+**Tie data tables together and test full model:
+Edit the 4 .rb model files to ad the belongs_to and has_many relationships
+rails g migration AddUserToPuns user:references
+rails g migration AddUserToTranslations user:references
+rails g migration AddUserToVotes user:references 
+rails g migration AddPunsToVotes pun:references
+rails g migration AddPunsToTranslations pun:references
+rake db:migrate
+
+Pun.create({pun:”…”, rating:0, language:”English”})
+OR
+p1 = Pun.new
+p1….
+p1.save
+OR
+Load seeds.rb with Pun.create….
+#rake db:reload  # to erase and re-load seed data
+user_1 = User.create({name: "Admin", email: "admin@admin.com", password: "password",
+	password_confirmation: "password", is_admin: true, rank: 10, num_points: 100,
+	native_language: "English"})
+
+user_2 = User.create({name: "Test", email: "test@test.com", password: "test",
+	password_confirmation: "test", is_admin: false, rank: 0, num_points: 0,
+	native_language: "Japanese"})
+
+pun_1 = Pun.create({pun: "", rating: 0, language: "Japanese", user_id: user_2.user_id})
+
+pun_2 = Pun.create({pun: "", rating: 4, language: "English", user_id: user_1.user_id})
+
+translation_1 = Translation.create({language: "English", translated_pun: "", 
+	comments: "", user_id: user_2.user_id, pun_id: pun_1.pun_id})
+
+vote_1 = ({pun_id: pun_1.pun_id, user_id: user_1.user_id})
+vote_1 = ({pun_id: pun_2.pun_id, user_id: user_2.user_id})
+vote_1 = ({pun_id: pun_2.pun_id, user_id: user_2.user_id})
+
+
+BOOKMARK
+Setup controller .rb and view .html.rb
+use <%= link_to ‘displayed verbiage’, routes_path %>
+
+Setup routes
+rake routes
+
+Try localhost:3000/…
+

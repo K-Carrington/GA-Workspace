@@ -1,0 +1,8 @@
+<h1>Puns3#show</h1>
+<p>Find me in app/views/puns3/show.html.erb</p>
+
+Pun: <%= @pun%><br>
+User ID: <%= @user_id.inspect %><br>
+<br>
+<%= link_to 'Edit', edit_pun_path(@pun) %>
+<%= link_to 'Delete', delete_pun_path(@pun), method: :delete %>

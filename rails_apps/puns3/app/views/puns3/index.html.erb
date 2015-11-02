@@ -1,0 +1,13 @@
+<h1>Puns3#index</h1>
+<p>Find me in app/views/puns3/index.html.erb</p>
+
+<% @puns.each do |p| %>
+  <p>Pun: <%=p.pun%></p>
+  <p>Rating:<%=p.laugh_level%></p>
+
+  <%= link_to 'SHOW PUN', pun_path(p) %>
+  <%= link_to 'UPDATE PUN', edit_pun_path(p) %>
+  <br>
+<%end%>
+<!-- # these paths are based on routes.rb -->
+<%= link_to 'ADD PUN', puns_path  %>

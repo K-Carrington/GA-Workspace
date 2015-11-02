@@ -1,0 +1,10 @@
+<h1>Flower Power!</h1>
+
+<% @flowers.each do |f| %>
+  <b>Name:</b> <%= f.name %>
+  <b>Smokable:</b> <%= f.smokable.to_s %>
+  <b>Color:</b> <%= f.color %>
+  <%= link_to 'SHOW FLOWER', flower_path(f) %>
+  <%= link_to 'UPDATE FLOWER', edit_flower_path(f) %>
+  <br>
+<%end%>

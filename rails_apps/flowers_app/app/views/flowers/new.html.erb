@@ -1,0 +1,9 @@
+<h1>Flower Creations Center</h1>
+
+<%= form_for Flower.new do |f| %>
+  <%= f.text_field(:name, placeholder:'name') %>
+  <%= f.label(:smokable)%>
+  <%= f.check_box(:smokable) %>
+  <%= f.text_field(:color, placeholder:'color') %>
+  <%= f.submit('Add') %>
+<% end %>

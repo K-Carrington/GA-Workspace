@@ -1,0 +1,18 @@
+<h1>CS Subject Edit Page</h1>
+
+<a href="puns" data-method="edit">
+  	<div>Add a source</div></a>
+<h2><%= p[:subject] %></h2>
+<h3><%= p[:student] %></h3>
+<% @puns.each_with_index do |p, i| %>
+<!--
+
+<ul>
+  <li><a href="/puns/<%=i%>"> Person who said: <%= p[:person_responsible] %></a></li>
+  <li>Laugh Level: <%= p[:laugh_level] %></li>
+  
+  	<a href="/puns/<%=i%>" data-method="delete">
+  	<div>Delete</div></a>
+</ul>
+-->
+<% end %>

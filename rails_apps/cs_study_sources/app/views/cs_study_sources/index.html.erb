@@ -1,0 +1,9 @@
+<h1>CS Study Sources</h1>
+
+<a href="cs_study_sources" data-method="create">
+  	<div>Add a new topic</div></a>
+
+<% @cs_study_sources.each_with_index do |s, i| %>
+  <h3><a href="/cs_study_sources/<%=i%>"><%= s[:subject] %><br>
+    <a href="/cs_study_sources/<%=i%>"> Student: <%= s[:student] %></a></h3>
+<% end %>

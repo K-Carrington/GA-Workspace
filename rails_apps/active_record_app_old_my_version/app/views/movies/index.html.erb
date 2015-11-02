@@ -1,0 +1,14 @@
+<h1>Movies#index</h1>
+<p>Find me in app/views/movies/index.html.erb</p>
+
+<% @movies.each do |m| %>
+  <p>Title: <%=m.title%></p>
+  <p>Release Date:<%=m.release_date%></p>
+
+  <%= link_to 'SHOW MOVIE', movie_path(m) %>
+  <%= link_to 'UPDATE MOVIE', edit_movie_path(m) %>
+  <br>
+<%end%>
+<!-- # these paths are based on routes.rb -->
+<%= link_to 'ADD MOVIE', movies_path  %>
+

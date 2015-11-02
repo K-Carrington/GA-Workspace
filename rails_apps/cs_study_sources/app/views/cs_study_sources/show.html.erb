@@ -1,0 +1,8 @@
+<h1>Subject <%= @subject[:subject] %></h1>
+<h2>Student: <%= @subject[:student] %></h2>
+<h3>Sources:</h3> 
+<ul>
+<% @subject[:sources_arr].each do |s| %>
+  <li><%= s %></li>
+<% end %>
+</ul>

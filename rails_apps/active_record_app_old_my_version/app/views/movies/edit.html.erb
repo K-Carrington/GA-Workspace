@@ -1,0 +1,10 @@
+<h1>Movies#edit</h1>
+<p>Find me in app/views/movies/edit.html.erb</p>
+
+<%= form_for @movie do |f| %>
+  <%= f.label(:title) %>
+  <%= f.text_field(:title) %>
+  <%= f.label(:release_data) %>
+  <%= f.text_field(:release_date) %>
+  <%= f.submit('Update') %>
+<%end%>
