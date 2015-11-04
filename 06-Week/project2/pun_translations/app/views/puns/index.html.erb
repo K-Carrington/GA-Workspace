@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <h1>Pun Translations</h1>
         <p>This is a site for English and other language learners to share puns, translations and comment on the puns. Feel free to create an account and enter your pun so that others can enjoy, translate and benefit!</p>
-        <p>Also as a participant you can vote on puns. Additionally you earn points for every pun you enter. When you enter enough puns you become a pun general! (Oyaji Gyagu Taishou)
+        <p>Also as a participant you can vote on puns. Additionally you earn points for every pun you enter. When you enter enough puns you become a high ranking pun General (aka Oyaji Gyagu Taishou)!
     </div>
 
 
@@ -14,7 +14,7 @@
                 <div>Language: <%= p.language%></div>
                 <div><small>Person Responsible: 
                   <% if p.user %>
-                    <%= p.user.email %>
+                    <%= p.user.name %>: <%= p.user.email %> (Pts:<%=p.user.num_points%>)
                   <%else %>
                     Anonymous User
                   <%end%>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-10">
                 <% if logged_in? %>
-                    <% if current_user.id == p.user.id %>
+                    <% if current_user.id == p.user.id || current_user.is_admin %>
                       <%= link_to 'Delete this Pun', delete_pun_path(p.id), method: :delete, data: {confirm: 'Are you sure?'} %>
                        
                         <a href="<%= edit_pun_path(p.id) %>" class="btn-sm btn-primary">Edit this Pun</a>

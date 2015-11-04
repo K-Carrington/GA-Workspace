@@ -1,4 +1,5 @@
 <div class="page-header">
+	<%= link_to "Back to all Puns", '/' %>
 	<h2><%= @pun.pun %></h2>
 </div>
 <div>
@@ -6,22 +7,23 @@
 	<% @pun.translations.each do |t| %>
 	  <li>
 		<div class="list=group-item">Translation: <%= t.translated_pun %></div>
-		<div><small>Language: <%= t.language %></small></div>
+		<div><small>Language of Translation: <%= t.language %></small></div>
 		<div><small>Comment: <%= t.comments %></small></div>
-		<div><small>Person Responsible: <% if t.user %>
-              <%= t.user.email %>
+		<div><small>Person Responsible: 
+			<% if t.user %>
+              <%= t.user.name %>: <%= t.user.email %>
             <%else %>
               Anonymous User
             <%end%>
         </small></div>
-
-        </div>
-          <% if logged_in? %>
-            <% if current_user.id == t.user.id %>
+        <% if logged_in? %>
+          <% if current_user.id == t.user.id || current_user.num_points > 37 || current_user.is_admin %>
+            </div>
               <a href="<%= edit_translation_path(t.id) %>" class="btn-sm btn-primary">Edit</a>
-            <% end %>
+            </div>
+            <br>
           <% end %>
-        </div>
+        <% end %>     
 
       </li>
 	<%end%>
@@ -36,7 +38,7 @@
           <%= f.text_area :translated_pun %>
         </div>
         <div>
-          <%= f.label :body, "Language:" %>
+          <%= f.label :body, "Language of translation:" %>
           <%= f.text_area :language %>
         </div>
         <div>
@@ -44,6 +46,6 @@
           <%= f.text_area :comments %>
         </div>
     </div>
-    <%= f.submit "Add" %>
+    <%= f.submit "Add Translation" %>
     <% end %>
   </div>

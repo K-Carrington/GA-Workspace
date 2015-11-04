@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-def user_id_is_params_id?
+  def user_id_is_params_id?
     current_user.id.to_s == params[:id].to_s
   end
 

@@ -26,11 +26,11 @@ Rails.application.routes.draw do
   #get '/translations' => 'translations#index'
   #get '/translations/:id' => 'translations#show', as: :translation
   #get '/translations/:id/delete' => 'translations#destroy', as: :delete_translation
-  get 'translations/' => 'translations#new'
+  get 'translations/' => 'translations#new', as: :translation
   post '/puns/:id/translations' => 'translations#create', as: :create_translation
   delete 'translations/:id' => 'translations#destroy', as: :delete_translation
   get  '/translations/:id/edit' => 'translations#edit', as: :edit_translation
-  patch 'translations/:id/' => 'translations#update'
+  # patch 'translations/:id' => 'translations#update'
 
   get '/vote' => 'votes#create'
   get '/unvote' => 'votes#destroy'

@@ -1,15 +1,16 @@
 Puns Translation User Stories
 
 MVP:
-1. As a user, when I bring up the app I want to read a brief description so that I know how it works.
-2. As a user, I want to be able to create an account and log in.
-3. As a user, I want to be able to create a new pun, create a comment/translation of some one else’s, edit my puns and comments/translations and delete anything I created.
-4. As a user, I want to be able to like/vote on any of the puns in the system,
-5. As a user, I want to earn points for adding a pun, a comment/translation or having people like/vote highly of my pun.
-6. As a user, if I earn enough points I want to be promoted to the rank of pun captain.
-7. As a pun captain user, I want to be able to also edit others’ comments/translations.
-8. As an administrator user, I want to be able to also edit and delete others’ puns and comments/translations.
+1. -v-As a user, when I bring up the app I want to read a brief description so that I know how it works.
+2. -v-As a user, I want to be able to create an account and log in.
+3. -.-As a user, I want to be able to create a new pun, create a comment/translation of some one else’s, edit my puns and comments/translations and delete anything I created.
+4. -v-As a user, I want to be able to like/vote on any of the puns in the system,
+5. -v-As a user, I want to earn points for adding a pun, a comment/translation or having people like/vote highly of my pun.
+6. -v-As a user, if I earn enough points I want to be promoted to the rank of pun captain.
+7. -v-As a pun captain user, I want to be able to also edit others’ comments/translations.
+8. -v-As an administrator user, I want to be able to also edit and delete others’ puns and comments/translations.
 
 More:
-9. As a user, I want to be able to change my username and have all of my posts update
-10. As a user, I want to be able to sort the puns by either date posted or by language (either direction for both)
+9. - -As a user, I want to be able to change my username/email and have all of my posts update
+10. - -As a user, I want to be able to delete my account
+11. - -As a user, I want to be able to sort the puns by either date posted, user, number of votes or by language (either direction for all)

@@ -13,7 +13,11 @@ class PunsController < ApplicationController
 
   def create
     @pun = Pun.new(pun_params)
-    #TBD need to get user_id in here before saving
+
+    @user = current_user
+    @user.num_points += 1
+    @user.save
+
     @pun.user_id = current_user.id
     @pun.rating = 0
     if @pun.save
@@ -29,7 +33,6 @@ class PunsController < ApplicationController
 
   def update
     @pun = Pun.find(params[:id])
-
     if @pun.update(pun_params)
       redirect_to '/'
     else
@@ -39,6 +42,12 @@ class PunsController < ApplicationController
 
   def destroy
     @pun = Pun.find(params[:id])
+
+    
+    @user = current_user
+    @user.num_points -= 1
+    @user.save
+
     if @pun.destroy
       redirect_to('/')
     else

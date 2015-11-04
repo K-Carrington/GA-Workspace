@@ -1,2 +1,22 @@
-<h1>Translations#edit</h1>
-<p>Find me in app/views/translations/edit.html.erb</p>
+<h1>Update Translation</h1>
+<p>Pun: <%= @translation.pun.pun %></p>
+
+<div class="">
+    <%= form_for @translation do |f| %>
+    <div>
+    	<div>
+          <%= f.label :body, "Pun translation:" %>
+          <%= f.text_area :translated_pun %>
+        </div>
+        <div>
+          <%= f.label :body, "Language of translation:" %>
+          <%= f.text_area :language %>
+        </div>
+        <div>
+          <%= f.label :body, "Any comments?" %>
+          <%= f.text_area :comments %>
+        </div>
+    </div>
+    <%= f.submit "Update Translation" %>
+    <% end %>
+  </div>
