@@ -84,9 +84,9 @@ pun_2 = Pun.create({pun: "I wasn't originally going to get a brain transplant, b
 translation_1 = Translation.create({language: "English", translated_pun: "Are watermelons cheap?", 
 	comments: "Makes Japanese people laugh", user_id: user_2.id, pun_id: pun_1.id})
 
-vote_1 = ({pun_id: pun_1.id, user_id: user_1.id})
-vote_1 = ({pun_id: pun_2.id, user_id: user_2.id})
-vote_1 = ({pun_id: pun_2.id, user_id: user_2.id})
+vote_1 = Vote.create({pun_id: pun_1.id, user_id: user_1.id})
+vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
+vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
 
 
 rails g controller sessions new create destroy
@@ -196,9 +196,10 @@ rake db:seed (or rake db:reset)
 sessions/new.html.erb
 updated users/new…
 
-
 BOOKMARK
 *Test data in rails c
+
+*Borrow from …(Tony’s lesson, Phillip’s code and lessons, other past class lessons, …)
 
 Setup controller .rb and view .html.rb
 use <%= link_to ‘displayed verbiage’, routes_path %>

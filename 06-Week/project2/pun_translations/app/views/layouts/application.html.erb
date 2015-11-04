@@ -8,23 +8,29 @@
 </head>
 <body>
 
-  <% flash.each do |name, message| %>
-    <div class="flash-message flash-message-<%= name %>">
-      <%= message %>
+  <nav class="navbar navbar-default" background-image: url("https://pbs.twimg.com/media/BnihAFRCQAEgimU.jpg")>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Pun Translations" src="..." height="40" width="120">
+        </a>
+      </div>
+
+      <% if current_user %>
+      <p> hello, <%= current_user.email %> </p>
+      <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% else %>
+      <%= render 'sessions/login' %>
+      <% end %>
+      <% if logged_in? %>
+        <p><%= link_to "Create Pun", create_pun_path, class: "btn btn-primary" %></p>
+      <% end %>
+  
     </div>
-  <% end %>
-
-  <% if current_user %>
-    <p> hello, <%= current_user.email %> </p>
-
-    <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
-  <% else %>
-    <%= link_to 'Please login', login_path %>
-  <% end %>
-
-
-
-<%= yield %>
+  </nav>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

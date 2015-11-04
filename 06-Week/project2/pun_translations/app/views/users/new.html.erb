@@ -12,9 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :username %>
     <%= f.text_field :name, placeholder: 'Name' %><br>
   </div>
   <div class="field">
+    <%= f.label :native_language %>
     <%= f.text_field :native_language, placeholder: 'Native language' %><br>
   </div>
 
@@ -28,7 +30,7 @@
   </div>
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: 'Password'  %>
   </div>
   <div class="actions">
     <%= f.submit 'Add' %>

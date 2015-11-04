@@ -1,2 +1,48 @@
-<h1>Puns#index</h1>
-<p>Find me in app/views/puns/index.html.erb</p>
+
+    <div class="jumbotron">
+        <h1>Pun Translations</h1>
+        <p>This is a site for English and other language learners to share puns, translations and comment on the puns. Feel free to create an account and enter your pun so that others can enjoy, translate and benefit!</p>
+        <p>Also as a participant you can vote on puns. Additionally you earn points for every pun you enter. When you enter enough puns you become a pun general! (Oyaji Gyagu Taishou)
+    </div>
+
+
+<% @puns.each do |p| %>
+    <div class="pun">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div><%= p.pun %></div>
+                <div>Language: <%= p.language%></div>
+                <div><small>Person Responsible: 
+                  <% if p.user %>
+                    <%= p.user.email %>
+                  <%else %>
+                    Anonymous User
+                  <%end%>
+                </small></div>
+                <small><%= time_ago_in_words(p.created_at) %> ago</small>
+                <p><%= link_to "Translations", pun_path(p), class: "btn btn-primary" %></p>
+                <div>Translations: <%= p.translations.count %></div>
+                <div>Votes: <%= p.votes.count %></div>
+            </div>
+            <div class="col-md-10">
+                <% if logged_in? %>
+                    <% if current_user.id == p.user.id %>
+                      <%= link_to 'Delete this Pun', delete_pun_path(p.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+                       
+                        <a href="<%= edit_pun_path(p.id) %>" class="btn-sm btn-primary">Edit this Pun</a>
+                    <% end %>
+                    <% if current_user.already_voted_for?(p) %>
+                        <%= link_to 'Unvote this Pun', {controller: 'votes', action: 'destroy', id: p.id}, class: 'btn-sm btn-default' %>
+                    <% else %>
+                        <%= link_to 'Vote for this Pun', {controller: 'votes', action: 'create', id: p.id}, class: 'btn-sm btn-success' %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <br>
+<% end %>
+
+
+
+

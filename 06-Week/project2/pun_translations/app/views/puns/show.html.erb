@@ -1,2 +1,49 @@
-<h1>Puns#show</h1>
-<p>Find me in app/views/puns/show.html.erb</p>
+<div class="page-header">
+	<h2><%= @pun.pun %></h2>
+</div>
+<div>
+  <ul class="list-group">
+	<% @pun.translations.each do |t| %>
+	  <li>
+		<div class="list=group-item">Translation: <%= t.translated_pun %></div>
+		<div><small>Language: <%= t.language %></small></div>
+		<div><small>Comment: <%= t.comments %></small></div>
+		<div><small>Person Responsible: <% if t.user %>
+              <%= t.user.email %>
+            <%else %>
+              Anonymous User
+            <%end%>
+        </small></div>
+
+        </div>
+          <% if logged_in? %>
+            <% if current_user.id == t.user.id %>
+              <a href="<%= edit_translation_path(t.id) %>" class="btn-sm btn-primary">Edit</a>
+            <% end %>
+          <% end %>
+        </div>
+
+      </li>
+	<%end%>
+  </ul>
+</div>
+</div>
+  <div class="">
+    <%= form_for [@pun, Translation.new] do |f| %>
+    <div>
+    	<div>
+          <%= f.label :body, "New translation:" %>
+          <%= f.text_area :translated_pun %>
+        </div>
+        <div>
+          <%= f.label :body, "Language:" %>
+          <%= f.text_area :language %>
+        </div>
+        <div>
+          <%= f.label :body, "Any comments?" %>
+          <%= f.text_area :comments %>
+        </div>
+    </div>
+    <%= f.submit "Add" %>
+    <% end %>
+  </div>

@@ -24,7 +24,7 @@ pun_2 = Pun.create({pun: "I wasn't originally going to get a brain transplant, b
 translation_1 = Translation.create({language: "English", translated_pun: "Are watermelons cheap?", 
 	comments: "Makes Japanese people laugh", user_id: user_2.id, pun_id: pun_1.id})
 
-vote_1 = ({pun_id: pun_1.id, user_id: user_1.id})
-vote_1 = ({pun_id: pun_2.id, user_id: user_2.id})
-vote_1 = ({pun_id: pun_2.id, user_id: user_2.id})
+vote_1 = Vote.create({pun_id: pun_1.id, user_id: user_1.id})
+vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
+vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
 

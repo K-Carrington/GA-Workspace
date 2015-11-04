@@ -1,0 +1,24 @@
+<h1></h1>
+<%= form_for @pun do |p| %>
+  <% if @pun .errors.any? %> # check for errors in the submitted data
+  <div class="error_messages">
+    <h2>Form is invalid</h2>
+    <ul>
+      <% for message in @pun.errors.full_messages %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= p.text_field :pun, placeholder: 'Pun text' %><br>
+  </div>
+  <div class="field">
+    <%= p.text_field :language, placeholder: 'Language' %><br>
+  </div>
+
+  <div class="actions">
+    <%= p.submit 'Add' %>
+  </div>
+<% end %>

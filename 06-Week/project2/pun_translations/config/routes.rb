@@ -1,114 +1,53 @@
 Rails.application.routes.draw do
 
-  root "users#index"
-  resources :users, only: [:new, :index, :create, :show, :edit, :update, :destroy]
-  get 'login', to: 'sessions#new'
-  resources :sessions, only: [:new, :create, :destroy]
-  delete "/logout", to: "sessions#destroy"
+  root 'puns#index'
 
-
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
-
- get 'puns/index'
-
-  get 'puns/show'
-
-  get 'puns/new'
-
-  get 'puns/create'
-
-  get 'puns/edit'
-
-  get 'puns/update'
-
-  get 'puns/destroy'
+  #get '/users/:id/delete' => 'users#confirm_destroy', as: :delete_user
+  #get '/users/:id/confirm_delete' => 'users#destroy', as: :confirm_delete_user
 
   
-  
-  get 'votes/create'
+# May need the aliases at the end of some of these lines
 
-  get 'votes/destroy'
+  get 'puns/' => 'puns#new'
+  post 'puns/' => 'puns#create', as: :create_pun
+  get 'puns/:id' => 'puns#show', as: :pun
+  #get '/puns' => 'puns#index'
+  delete 'puns/:id' => 'puns#destroy', as: :delete_pun
+  #get '/puns/:id/delete' => 'puns#confirm_destroy', as: :delete_pun
+  #get '/puns/:id/confirm_delete' => 'puns#destroy', as: :confirm_delete_pun
+  get  'puns/:id/edit' => 'puns#edit', as: :edit_pun
+  patch 'puns/:id/' => 'puns#update'
 
-  get 'translations/index'
+  resources :users, except: :destroy
+  #resources :users, except: :destroy do
+  #  resources :puns, only: :index
+  #end
 
-  get 'translations/new'
+  #get '/translations' => 'translations#index'
+  #get '/translations/:id' => 'translations#show', as: :translation
+  #get '/translations/:id/delete' => 'translations#destroy', as: :delete_translation
+  get 'translations/' => 'translations#new'
+  post '/puns/:id/translations' => 'translations#create', as: :create_translation
+  delete 'translations/:id' => 'translations#destroy', as: :delete_translation
+  get  '/translations/:id/edit' => 'translations#edit', as: :edit_translation
+  patch 'translations/:id/' => 'translations#update'
 
-  get 'translations/create'
+  get '/vote' => 'votes#create'
+  get '/unvote' => 'votes#destroy'
 
-  get 'translations/edit'
-
-  get 'translations/update'
-
-  get 'translations/destroy'
-
- 
-
+  #session routes
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy', as: :logout
+  resources :sessions, only: [:new, :create]
 
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  #resources :users, only: [:new, :index, :create]
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  #Tony's
+  resources :puns, except: [:edit, :update, :destroy] do
+    resources :translations, only: [:create, :update, :destroy]
+  end
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
