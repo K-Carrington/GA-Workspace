@@ -12,12 +12,12 @@ class PunsController < ApplicationController
   end
 
   def create
-    @pun = Pun.new(pun_params)
-
+    # User gets/looses points for adding/deleting puns (and if they get/loose votes)
     @user = current_user
     @user.num_points += 1
     @user.save
 
+    @pun = Pun.new(pun_params)
     @pun.user_id = current_user.id
     @pun.rating = 0
     if @pun.save
@@ -41,13 +41,11 @@ class PunsController < ApplicationController
   end
 
   def destroy
-    @pun = Pun.find(params[:id])
-
-    
     @user = current_user
     @user.num_points -= 1
     @user.save
 
+    @pun = Pun.find(params[:id])
     if @pun.destroy
       redirect_to('/')
     else

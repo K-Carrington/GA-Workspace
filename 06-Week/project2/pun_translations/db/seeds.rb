@@ -7,24 +7,31 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #rake db:reset # to drop the whole Database and re-seed data
 
-user_1 = User.create({name: "Admin", email: "admin@admin.com", password: "password",
+if User.destroy_all
+  user_1 = User.create({name: "Admin", email: "admin@admin.com", password: "password",
 	password_confirmation: "password", is_admin: true, rank: 10, num_points: 100,
 	native_language: "English"})
 
-user_2 = User.create({name: "Test", email: "test@test.com", password: "test",
-	password_confirmation: "test", is_admin: false, rank: 0, num_points: 0,
+  user_2 = User.create({name: "Test", email: "test@test.com", password: "test",
+	password_confirmation: "test", is_admin: false, rank: 0, num_points: 3,
 	native_language: "Japanese"})
+end
 
-pun_1 = Pun.create({pun: "Suika wa yasuika", rating: 0, language: "Japanese", 
+if Pun.destroy_all
+  pun_1 = Pun.create({pun: "Suika wa yasuika", rating: 0, language: "Japanese", 
 	user_id: user_2.id})
 
-pun_2 = Pun.create({pun: "I wasn't originally going to get a brain transplant, but then I changed my mind.", 
+  pun_2 = Pun.create({pun: "I wasn't originally going to get a brain transplant, but then I changed my mind.", 
 	rating: 4, language: "English", user_id: user_1.id})
+end
 
-translation_1 = Translation.create({language: "English", translated_pun: "Are watermelons cheap?", 
+if Translation.destroy_all
+  translation_1 = Translation.create({language: "English", translated_pun: "Are watermelons cheap?", 
 	comments: "Makes Japanese people laugh", user_id: user_2.id, pun_id: pun_1.id})
+end
 
-vote_1 = Vote.create({pun_id: pun_1.id, user_id: user_1.id})
-vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
-vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
-
+if Vote.destroy_all
+  vote_1 = Vote.create({pun_id: pun_1.id, user_id: user_1.id})
+  vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
+  vote_1 = Vote.create({pun_id: pun_2.id, user_id: user_2.id})
+end

@@ -1,51 +1,68 @@
+<%= link_to "Back to all Puns", '/' %>
 <div class="page-header">
-	<%= link_to "Back to all Puns", '/' %>
-	<h2><%= @pun.pun %></h2>
+<div class="row">
+	<br>
+	Translation Station for:<br><h2><%= @pun.pun %></h2>
 </div>
+</div>
+
 <div>
   <ul class="list-group">
+  
 	<% @pun.translations.each do |t| %>
+
+   <!-- <div class="list-group-item"> -->
+    <div class="row">
 	  <li>
-		<div class="list=group-item">Translation: <%= t.translated_pun %></div>
+		<div>Translation: <%= t.translated_pun %></div>
 		<div><small>Language of Translation: <%= t.language %></small></div>
 		<div><small>Comment: <%= t.comments %></small></div>
-		<div><small>Person Responsible: 
+		<div><small>Translator: 
 			<% if t.user %>
-              <%= t.user.name %>: <%= t.user.email %>
-            <%else %>
-              Anonymous User
-            <%end%>
-        </small></div>
-        <% if logged_in? %>
-          <% if current_user.id == t.user.id || current_user.num_points > 37 || current_user.is_admin %>
+        <%= t.user.name %>: <%= t.user.email %>
+      <%else %>
+        Anonymous User
+      <%end%>
+      </small></div>
+      <% if logged_in? %>
+        <% if current_user.id == t.user.id || current_user.num_points > 37 || current_user.is_admin %>
+            <div>
+              <%= link_to "edit translation", edit_pun_translation_path(t.pun_id, t.id), class:"btn-sm btn-primary" %>
+              <%= link_to "delete translation", delete_translation_path(t.id), method: :delete, class:"btn-sm btn-primary" %>
             </div>
-              <a href="<%= edit_translation_path(t.id) %>" class="btn-sm btn-primary">Edit</a>
-            </div>
-            <br>
-          <% end %>
-        <% end %>     
 
-      </li>
+        <% end %>
+  
+      <% end %>     
+    </li>
+   <!-- </div> -->
+    </div>
 	<%end%>
+  
   </ul>
 </div>
-</div>
-  <div class="">
+
+<div>
+  <div class="data_entry">
     <%= form_for [@pun, Translation.new] do |f| %>
     <div>
-    	<div>
+    	  <div>
           <%= f.label :body, "New translation:" %>
-          <%= f.text_area :translated_pun %>
+          <div class="field"><%= f.text_area :translated_pun, cols: 90, rows: 1 %></div>
         </div>
         <div>
           <%= f.label :body, "Language of translation:" %>
-          <%= f.text_area :language %>
+          <div class="field"><%= f.text_area :language, cols: 20, rows: 1 %></div>
         </div>
         <div>
           <%= f.label :body, "Any comments?" %>
-          <%= f.text_area :comments %>
+          <div class="field"><%= f.text_area :comments, cols: 50, rows: 1 %></div>
         </div>
     </div>
     <%= f.submit "Add Translation" %>
     <% end %>
   </div>
+</div>
+
+
+

@@ -1,46 +1,62 @@
 
+    <div class="pun_tr_intro">
+        <img src="https://pbs.twimg.com/media/BnihAFRCQAEgimU.jpg">
+    </div>
     <div class="jumbotron">
         <h1>Pun Translations</h1>
-        <p>This is a site for English and other language learners to share puns, translations and comment on the puns. Feel free to create an account and enter your pun so that others can enjoy, translate and benefit!</p>
-        <p>Also as a participant you can vote on puns. Additionally you earn points for every pun you enter. When you enter enough puns you become a high ranking pun General (aka Oyaji Gyagu Taishou)!
+        <h3>(親父ギャグの翻訳)</h3>
+        <p>This is a site for English and other language learners to share puns, add translations to them and comment on the pun/translation. Feel free to create an account and enter your pun so that others can enjoy, translate and benefit!</p>
+        <p>Also as a participant you earn the rank of pun Liutenant and can vote on puns. Additionally you earn points for every pun you enter. When you enter enough puns and get enough votes you become a high ranking pun general and can edit others' comments!</p>
     </div>
-
 
 <% @puns.each do |p| %>
     <div class="pun">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div><%= p.pun %></div>
-                <div>Language: <%= p.language%></div>
-                <div><small>Person Responsible: 
+            <div class="col-sm-3">
+                <div><small>Person Responsible:<br>
                   <% if p.user %>
-                    <%= p.user.name %>: <%= p.user.email %> (Pts:<%=p.user.num_points%>)
+                    <%= p.user.name %>: <%= p.user.email %> <br><%= p.user.native_language %><br>(Pts: <%=p.user.num_points%>,
+                    <% if p.user.num_points > 37 %> 
+                      <%= "Pun General" %> 
+                    <% else %>
+                      <%= "Pun Liutenant" %> 
+                    <%end%>)
                   <%else %>
                     Anonymous User
                   <%end%>
                 </small></div>
                 <small><%= time_ago_in_words(p.created_at) %> ago</small>
-                <p><%= link_to "Translations", pun_path(p), class: "btn btn-primary" %></p>
-                <div>Translations: <%= p.translations.count %></div>
-                <div>Votes: <%= p.votes.count %></div>
+                <% if p.user %>
+                  <div>Votes: <%= p.votes.count %></div>
+                <% end %>
             </div>
-            <div class="col-md-10">
+            <div class="col-sm-9">
+                <span>Language: <%= p.language%>, </span>
+                <span>Translations: <%= p.translations.count %></span>
+                <span><%= link_to "Goto Translation Station", pun_path(p), class: "btn btn-primary" %></span>
+                <div id="pun_text"><%= p.pun %></div>
                 <% if logged_in? %>
-                    <% if current_user.id == p.user.id || current_user.is_admin %>
-                      <%= link_to 'Delete this Pun', delete_pun_path(p.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+                    <% if p.user && current_user.id == p.user.id || current_user.is_admin %>
+                      <%= link_to 'Delete this Pun', delete_pun_path(p.id), method: :delete, data: {confirm: 'Are you sure you want to delete this pun and all of its translations?'} %>
                        
                         <a href="<%= edit_pun_path(p.id) %>" class="btn-sm btn-primary">Edit this Pun</a>
                     <% end %>
-                    <% if current_user.already_voted_for?(p) %>
-                        <%= link_to 'Unvote this Pun', {controller: 'votes', action: 'destroy', id: p.id}, class: 'btn-sm btn-default' %>
-                    <% else %>
+                    <% if p.user %>
+                      <% if current_user.already_voted_for?(p) %>
+                        <%= link_to 'Unvote this Pun', {controller: 'votes', action: 'destroy', id: p.id}, class: 'btn-sm btn-warning' %>
+                      <% else %>
                         <%= link_to 'Vote for this Pun', {controller: 'votes', action: 'create', id: p.id}, class: 'btn-sm btn-success' %>
+                      <% end %>
                     <% end %>
                 <% end %>
             </div>
         </div>
     </div>
     <br>
+<% end %>
+
+<% if logged_in? %>
+   <p><%= link_to "Create Pun", new_pun_path, class: "btn btn-primary" %></p>
 <% end %>
 
 

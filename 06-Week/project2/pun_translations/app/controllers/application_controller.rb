@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def logout
+    session[:user_id] = nil
+  end
   
 end

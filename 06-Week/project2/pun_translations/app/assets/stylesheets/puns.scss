@@ -1,3 +1,101 @@
 // Place all the styles related to the puns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Pallate	
+//light tan			#E8DDCB
+//light brown		#CDB380
+//dark green blue	#036564
+//dark blue			#033649
+//very dark blue	#031634
+
+
+body {
+  
+  
+}
+
+#pun_text {
+	font-size: 24px;
+	border: 4px solid #031634;
+	background-color: #036564;
+	color: #E8DDCB;
+	border-radius: 25px;
+	margin: 8px;
+	padding: 5px;
+}
+.pun_tr_intro {
+    //color: inherit;
+	//background-color: #036564;
+	opacity: 0.9;
+	//background-image: url("https://pbs.twimg.com/media/BnihAFRCQAEgimU.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.jumbotron {
+	//opacity: 0.8;
+}
+
+.navbar-custom {
+    color: #E8DDCB;
+    background-color: #031634;
+}
+
+.row {
+	border: 2px solid;
+	background: #E8DDCB;
+	padding: 10px;
+	border-radius: 25px;
+}
+
+.data_entry {
+	background: #CDB380;
+	border: 3px solid;
+	left-padding: 20px;
+	padding: 10px;
+	border-radius: 25px;
+}
+
+.field {
+	margin: 5px;
+}
+
+
+#current_user {
+	color: #E8DDCB;
+
+}
+
+.translation {
+	border:3px solid;
+	//background-image: url("https://pbs.twimg.com/media/BnihAFRCQAEgimU.jpg");
+	background-color: #E8DDCB;
+	border-radius: 25px;
+
+}
+
+
+.container {
+background-color: #033649;
+ font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 16px;
+ // line-height: 18px;
+ //   content: ' ';
+ //   display: block;
+ //   position: absolute;
+ //   left: 0;
+  //  top: 0;
+  //  width: 100%;
+  //  height: 100%;
+  //  z-index: 1;
+ //   opacity: 0.3;
+ //  background-image: url("https://pbs.twimg.com/media/BnihAFRCQAEgimU.jpg");
+ //   background-repeat: no-repeat;
+  //  background-position: 50% 0;
+  //  -ms-background-size: cover;
+  //  -o-background-size: cover;
+  //  -moz-background-size: cover;
+  //  -webkit-background-size: cover;
+  //  background-size: cover;
+}

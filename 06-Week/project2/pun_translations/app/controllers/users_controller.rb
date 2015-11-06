@@ -26,12 +26,7 @@ class UsersController < ApplicationController
    end
 
   def edit
-    #if user_id_is_params_id?
-    if current_user.id.to_s == params[:id].to_s
-    @user = User.find(session[:user_id])
-    else
-      redirect_to root_path
-    end
+      @user = User.find(params[:id])
   end
 
   def update
@@ -44,24 +39,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if user_id_is_params_id?
-      @user = User.find(params[:id])
-
-      #@user.puns.destroy #do I need puns pointer in users? do I want to destroy them?
-      @user.destroy
-      redirect_to logout_path
-    else
-      redirect_to root_path
+    logout
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to('/')
     end
-  end
-
-  def confirm_destroy
-    redirect_to root_path unless user_id_is_params_id?
   end
 
  private
    def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :native_language, :password, :password_confirmation)
    end
 
 end

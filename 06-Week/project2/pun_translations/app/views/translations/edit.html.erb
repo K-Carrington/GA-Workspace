@@ -1,20 +1,23 @@
-<h1>Update Translation</h1>
-<p>Pun: <%= @translation.pun.pun %></p>
-
-<div class="">
-    <%= form_for @translation do |f| %>
+<%= link_to "Back to all Puns", '/' %>
+<div class="data_entry">
+  <h3>Update Translation for</h3>
+  Pun: <%= @translation.pun.pun %>
+</div>
+<br>
+<div class="data_entry">
+    <%= form_for [@translation.pun, @translation] do |f| %>
     <div>
-    	<div>
+        <div>
           <%= f.label :body, "Pun translation:" %>
-          <%= f.text_area :translated_pun %>
+          <div class="field"><%= f.text_area :translated_pun, cols: 90, rows: 1 %></div>
         </div>
         <div>
           <%= f.label :body, "Language of translation:" %>
-          <%= f.text_area :language %>
+          <div class="field"><%= f.text_area :language, cols: 20, rows: 1 %></div>
         </div>
         <div>
           <%= f.label :body, "Any comments?" %>
-          <%= f.text_area :comments %>
+          <div class="field"><%= f.text_area :comments, cols: 50, rows: 1 %></div>
         </div>
     </div>
     <%= f.submit "Update Translation" %>

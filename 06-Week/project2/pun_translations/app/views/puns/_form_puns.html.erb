@@ -1,4 +1,4 @@
-<h1></h1>
+<div class="data_entry">
 <%= form_for @pun do |p| %>
   <% if @pun .errors.any? %> # check for errors in the submitted data
   <div class="error_messages">
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= p.text_field :pun, placeholder: 'Pun text' %><br>
+    <%= p.text_field :pun, placeholder: 'Pun text', size: 100 %><br>
   </div>
   <div class="field">
     <%= p.text_field :language, placeholder: 'Language' %><br>
@@ -22,3 +22,4 @@
     <%= p.submit 'Add' %>
   </div>
 <% end %>
+</div>

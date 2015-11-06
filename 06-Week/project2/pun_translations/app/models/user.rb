@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :email, presence: true, uniqueness: true
 
-  has_many :puns, dependent: :destroy
-  has_many :translations, dependent: :destroy
+  has_many :puns
+  has_many :translations
   has_many :votes, dependent: :destroy
 
   def already_voted_for?(pun)

@@ -8,26 +8,67 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default" background-image: url("https://pbs.twimg.com/media/BnihAFRCQAEgimU.jpg")>
+  <nav class="navbar navbar-inverse navbar-custom">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          <img alt="Pun Translations" src="..." height="40" width="120">
-        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Pun Translations</a>
       </div>
 
-      <% if current_user %>
-      <p> hello, <%= current_user.email %> </p>
-      <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
-      <% else %>
-      <%= render 'sessions/login' %>
-      <% end %>
       <% if logged_in? %>
-        <p><%= link_to "Create Pun", create_pun_path, class: "btn btn-primary" %></p>
+        <span><%= link_to "Create Pun", new_pun_path, class: "btn btn-primary" %> </span>
       <% end %>
-  
+      <% if current_user %>
+        <span id="current_user"> Hello, <%= current_user.name %></span><span> . </span>
+        <span><%= link_to ' Logout ', logout_path, method: :delete, data: {confirm: 'Are you sure that you want to logout?'} %></span><span> . </span>
+        <span><%= link_to ' Update Account ', edit_user_path(current_user) %> </span><span> . </span>
+        <span><%= link_to ' Delete Account ', delete_user_path(current_user), method: :delete, data: {confirm: 'DELETE USER ACCOUNT: Are you sure?'} %> </span>
+      <% else %>
+        <%= render 'sessions/login' %>
+      <% end %>
+      
+
+      <!-- Collect the nav links, forms, and other content for toggling 
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/about">About <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul> -->
+
     </div>
   </nav>
+
 <div class="container">
   <%= yield %>
 </div>
