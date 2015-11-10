@@ -9,22 +9,27 @@ MVP:
 6. -v-As a user, if I earn enough points I want to be promoted to the rank of pun general.
 7. -v-As a pun general user, I want to be able to also edit others’ comments/translations.
 8. -v-As an administrator user, I want to be able to also edit and delete others’ puns and comments/translations.
+9. -v-As a user, I want to be able to change my username/email/password/native language and have all of my posts update
+10. -v-As a user, I want to be able to delete my account, puns and translations.
 
 More:
-9. -v-As a user, I want to be able to change my username/email/password/native language and have all of my posts update
-10. -v-As a user, I want to be able to delete my account (but as another user it’s OK if the puns and translations/comments stay around.
-11. -.-As an administrator user, I want to be able to edit and delete others’ accounts <CAN DO VIA rails console>
+11. -.-As an administrator user, I want to be able to see all users info, edit and delete others’ accounts <CAN DO VIA rails console>
 
-12. - -As a user I want to have an auto-translate button for puns to my language
+12. -v-As a user I want my email/login to be unique
+
+13. -.-As a user I want to have an auto-translate button for puns to my language
 Around line 35 of pun show.html:
 <!-- Auto translate -->
         <%= link_to "auto (Google) translate", translate_path(t.pun_id), method: :translate, class:"btn-sm btn-primary" %>
 
-13. - -…Have my photo displayed by my user information for each pun and translation/comment (via paperclip gem)
 
-14. …use Rails willpaginate gem to paginate if long list of puns
-15. - -As a user, I want to be able to sort the puns by either date posted, user, number of votes or by language (either direction for all)
-16. …use Rails jqueryui to click and move things around
+14. - -…Have my photo displayed by my user information for each pun and translation/comment (via paperclip gem &/or Gravitars and/or carrier wave)
+
+- - Font gem that Ivy used
+
+15. - - …use Rails willpaginate gem to paginate if long list of puns
+16. - -As a user, I want to be able to sort the puns by either date posted, user, number of votes or by language (either direction for all)
+17. - - …use Rails jqueryui to click and move things around
 
 
 Also

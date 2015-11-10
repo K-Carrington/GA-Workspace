@@ -1,12 +1,10 @@
 Features to show of Pun Translations
 
 1. Description
-2. Create user
-3. Change user info
-8. Delete account
-4. Create pun
-5. Create translation
-6. Vote, show points and promotion
-7. Admin and General rights
+2. Create user (& login & logout), change and delete account
+3. Create pun, display, change and delete
+4. Create translation/comment, display, change and delete
+5. Vote, show points and promotion, un-vote
+6. Admin and General rights
 
 

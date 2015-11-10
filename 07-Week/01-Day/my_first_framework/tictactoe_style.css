@@ -1,0 +1,39 @@
+body {
+	width: 300px;
+  text-align: center;
+  margin: 0 auto;
+}
+.ttt_square {
+	background-color: green; 
+	width: 80px; 
+	height: 80px; 
+	border: black 2px solid;
+	float: left;
+}
+
+#result_img {
+  width: 80px; 
+  height: 80px; 
+  /*border: black 2px solid; */
+  display: inline-block;
+  padding-top: 10px
+}
+#result {
+  /*padding: 20px;*/
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.pic {
+	width: 60px;
+	height: 60px;
+  /*margin-top: 10px;*/
+}
+.instruction_text {
+  display: inline-block;
+}
+
+#clear_button {
+	 padding: 10px;
+}
