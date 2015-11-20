@@ -1,0 +1,11 @@
+  <h1><%= title %></h1>
+  <% var x = 123 %>
+  <% if (x > 10) { %>
+    <p><%= message %></p>
+  <%}%>
+  <ul>
+    <% users.forEach(function(u, i){ %>
+       <li>Num: <%=i+1%>, Name: <%= u.name %>
+       , Email: <%= u.email %></li>
+    <% }) %>
+  </ul>
