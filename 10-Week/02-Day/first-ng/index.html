@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>First Angular App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ted='ted' ng-controller="myController as myCtrl" class="container">
+    <h1>AngularJS Rocks!</h1>
+    <input type="text" ng-model="myCtrl.name" name="name" value="" >
+    <h5>{{ myCtrl.name }}</h5>
+<div ng-controller="secondController as sCtrl" class="">
+  <h1>{{ sCtrl.name }}</h1>
+</div>
+  <script type="text/javascript">
+    console.log($('.container').attr('ted'))
+  </script>
+  </body>
+</html>

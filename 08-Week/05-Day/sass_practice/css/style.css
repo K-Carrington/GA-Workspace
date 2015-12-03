@@ -1,0 +1,12 @@
+body {
+  background: lime; }
+
+h1 {
+  font-size: 12px; }
+  h1 span {
+    color: red; }
+
+#footer {
+  color: red; }
+
+/*# sourceMappingURL=style.css.map */

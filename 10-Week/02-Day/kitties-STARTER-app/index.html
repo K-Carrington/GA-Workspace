@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Kitties App!</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.z.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">		
+  </head>
+
+    
+	<body ng-app="AdoptionApp" ng-style="{'background-image':'url(\'images/background.png\')'}">
+        <div ng-controller="KittiesController as kc" id="container">
+     <!--     {{kc.studentMotto}}
+      //    {{kc.kittiesList}}
+     //     {{kc.myName}} -->
+
+          <div class="left-container">
+          <div ng-repeat="nekochan in kc.kittiesList" ng-hide="nekochan.adopted" >
+          	<div class="dashed">
+            <h1>{{nekochan.catName}}</h1>
+            <h2>{{nekochan.monthsOld}} months old</h2>
+            <img ng-src="{{nekochan.image}}" alt="Description" />
+     
+            <form name="myForm">
+              <label>Adopted:
+      	        <input type="checkbox" ng-model="nekochan.adopted">
+              </label>
+            </form>
+            </div>
+          </div>
+          </div>
+
+          <div class="right-container">
+          <div ng-repeat="nekochan in kc.kittiesList" ng-hide="!nekochan.adopted">
+          	<div chass="dashed">
+            <h1>{{nekochan.catName}}</h1>
+            <h2>{{nekochan.monthsOld}} months old</h2>
+            <img ng-src="{{nekochan.image}}" alt="Description" />
+     
+            <form name="myForm">
+              <label>Adopted:
+      	        <input type="checkbox" ng-model="nekochan.adopted">
+              </label>
+            </form>
+            </div>
+          </div>
+          </div>
+
+
+        </div> 
+
+    	<!--Sourcing Angular-->	
+    	<script type="text/javascript" src="js/angular.js"></script>	
+		<!-- Source in module -->
+		<script type="text/javascript" src="js/main.js"></script>
+		<!-- Source in controller -->
+        <script type="text/javascript" src="js/KittiesController.js"></script>
+	</body>
+</html>

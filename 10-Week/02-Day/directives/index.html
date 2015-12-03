@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+	<meta charset="utf-8">
+	<title>Directives Practice</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.z.6/css/bootstrap.min.css">
+	<script type="text/javascript" src="app.js"></script>
+  </head>
+
+
+
+
+  <body ng-init="students=['John', 'Mary', 'Kenneth', 'Holly']; obj={name: 'Kevin', likes: 'Virtual Reality', email: 'k@k.com'}; myColor='#ff00ff'; isVisible=true; r = Math.floor(Math.random()*10)" ng-style="{backgroundColor: myColor}">
+  	<p>r = {{r}}</p>
+    {{"students.len = " + students.length}}
+    <br>
+    {{"students[0] " + students[0]}}
+    <br>
+    <h3>{{obj}}</h3>
+    <ul>
+      <li ng-repeat="name in students">{{ name }}</li>
+      <li ng-repeat="(key, val) in obj">{{ key }}: {{val}}</li>
+    </ul>
+    <button ng-click="myArray.push('Name')">Push</button>
+    
+    <input type="text" ng-model="number" ng-init="number=0">
+    <h3>{{"Double of " + number + "is " + number*2}}</h3>
+
+    <form name="myForm">
+      <label>Value 1:
+      	<input type="checkbox" ng-model="checkboxModel.value1">
+      </label>
+    </form>
+    <h1>{{checkboxModel.value1}}</h1>
+
+    <button ng-init="count=0" ng-click="count = count+1">Increment up!</button>
+    <div>{{count}}</div>
+
+    <button ng-click="isVisible = !isVisible">Toggle Calc</button>
+    <div ng-show="isVisible">
+    <h5>Tipping Calculator</h5>
+    <p>Bill Amount:<input type="number" ng-model="billAmount" ng-init="billAmount=0; tipAmount=0"></p>
+    <div>
+      Tip Amount:
+      <button ng-click="tipAmount = billAmount * .1">10%</button> 
+      <button ng-click="tipAmount = billAmount * .15">15%</button> 
+      <button ng-click="tipAmount = billAmount * .2">20%</button>
+    </div>
+    <p>Tip Total: {{tipAmount | currency}}</p>
+    <p>Total: {{billAmount + tipAmount | currency}}</p>
+    </div>
+
+    <button ng-click="r = Math.floor(Math.random()*1000); h = r.toString(16); myColor='#'+h">Make it change color!</button>
+    <p>h = {{h}}</p>
+
+
+  </body>
+</html>

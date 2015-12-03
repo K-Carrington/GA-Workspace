@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>6px</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>
+<body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script src="//6px.min.js"></script>
+<script>
+px.init({
+    //userId: '1618cb69-896f-4570-87dc-b44089bc868f',
+    //userId: '1618cb69-896f-4570-87dc-b44089bc868f',
+    apiKey: 'e02b0fdb-dca6-4e52-9b7e-149cf5484ee2',
+    apiSecret: '2120e693-fda5-4c3d-99d3-3ec44cf35717'
+    //project_id: 'bbe0d09d-0dc7-44a3-9a73-540bf34582c4'
+});
+var _px = px({ taxi: 'https://s3.amazonaws.com/ooomf-com-files/mtNrf7oxS4uSxTzMBWfQ_DSC_0043.jpg' });
+
+_px.output({ taxi: 'unsplashed_taxi' }).tag('raw').url('6px');
+
+_px.save().then(function(res) {
+    console.log('Response', res);
+});
+</script>
+</body>
+</html>

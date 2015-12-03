@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>My NG CLASS</title>
+</head>
+
+<body ng-app="MyClassApp" ng-init="class-init: important">
+	<h1>Welcome to my Florist app</h1>
+	<h2 class="dashed">ni tasu ni ha {{2+2}}</h2>
+	
+	<!--What you type in the input becomes the class!!!-->
+	<h3 ng-class="classList">My todo</h3>
+	<input type="text" ng-model="classList">
+	
+	<ul>
+	  <li>  
+		  <label ng-class="{completed: done, important: true}">
+			  <input ng-model="done" type="checkbox">Pickup Seeds</label>
+	  </li>
+	  <li>
+		  <label><input type="checkbox">Deliver Plants</label>
+	  </li>
+	  <li>
+		  <label><input type="checkbox">Eat</label>
+	  </li>
+	</ul>
+	
+  <script src="angular.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

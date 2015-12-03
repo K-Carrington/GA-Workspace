@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/controller.js"></script>
+	</head>
+	<body ng-controller="MainController as mainCtrl">
+    
+		<header>
+			<h1>Angular Business Card Generator</h1>
+		</header>
+
+		<div class="container">
+
+			<div class="settings-panel">
+            
+				<ul>
+					<!--data binding to text entry-->
+					<li>Name: <input type="text" ng-model="mainCtrl.person.name"></li>
+					<li>Occupation: <input type="text" ng-model="mainCtrl.person.occupation"></li>
+					<li>Company: <input type="text" ng-model="mainCtrl.person.company"></li>
+					<li>Phone Numer: <input type="text" ng-model="mainCtrl.person.phone"></li>
+					<li>Email: <input type="text" ng-model="mainCtrl.person.email"></li>
+					<li>Color: <input type="color" ng-model="mainCtrl.person.color"></li>
+					<li>Radius: <input type="range" min:"0" max: "100" ng-model="mainCtrl.person.radius"></li>
+					<!--<li>Image: <input type="photo" ng-model="mainCtrl.person.image"></li>-->
+				</ul>	
+
+				<div class="order">
+					<button id="galogo-button" ng-click="mainCtrl.toggleImage()">Remove logo</button>
+					<button ng-click="mainCtrl.orderProcessAlert()">Order now</button>
+				</div>	
+
+			</div>
+
+			<div class="business-card" style="background: {{mainCtrl.person.color}}; border-radius: {{mainCtrl.person.radius}}">
+				<div class="contents">
+					<img id="ga-logo" src="http://sanfrancisco.impacthub.net/wp-content/uploads/sites/100/2015/04/GA_logo.png" ng-show="mainCtrl.imageVisible">
+					<h1 id="name">{{mainCtrl.person.name}}</h1>
+					<hr>
+					<h3>{{mainCtrl.person.occupation}}</h3>
+					<h3>{{mainCtrl.person.company}}</h3>
+					<h3>{{mainCtrl.person.phone}}</h3>
+					<h3>{{mainCtrl.person.email}}</h3>
+
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</body>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+	  //Don't need this, the above ng-click sets up the callback instead
+      $('#galogo-button').click(function() {
+      	toggleImage();
+      }
+	</script>
+</html>

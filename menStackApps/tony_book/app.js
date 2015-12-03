@@ -4,6 +4,7 @@ var express = require('express')
 ,bodyParser = require('body-parser')
 , mongoose  = require('mongoose')
 
+// Connect to a remote DB via mongo lab
 mongoose.connect('mongodb://kensdb:kcarring93@ds053794.mongolab.com:53794/kensdb', function() {
 	console.log('Connected to users db!');
 });

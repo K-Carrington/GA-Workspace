@@ -1,0 +1,15 @@
+$mainColor: red;
+body {
+	background: lime;
+}
+
+h1 {
+	font-size:12px;
+	span {
+	  color: $mainColor;
+	}
+}
+
+#footer {
+	color: $mainColor
+}
