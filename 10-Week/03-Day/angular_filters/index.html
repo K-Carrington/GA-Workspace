@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="candyController as candyCtrl">
 <!--navbar will go here-->
-<nav-bar></nav-bar>
+<nav-bar>{{candyCtrl.name}}</nav-bar>
 
 <div class="container" >
 	<div class="row">
@@ -30,10 +30,16 @@
 		</div>
 		<ul>
 			<!--<li ng-repeat="candy in candies | orderBy: '-name':true">{{candy.name}}</li>-->
-			<li ng-repeat="candy in candyCtrl.candies | orderBy:candyOrder | filter:filterSearch | limitTo: 5">{{candy.name}} {{candy.color|uppercase}} {{candy.price|currency}} - Fruity: {{candy.fruity | checkmark}}</li>
+			<li ng-repeat="candy in candyCtrl.candies | orderBy:candyOrder | filter:filterSearch | limitTo: 10">
+				<heading-area>{{candy.name}}</heading-area>
+				<info-area>Color: {{candy.color|uppercase}} {{candy.price|currency}}, Fruity: {{candy.fruity | checkmark}}</info-area>
+			</li>
 		</ul>
 	</div>
 </div>
+
+<footer-bar></footer-bar>
+
 
 </body>
 </html>

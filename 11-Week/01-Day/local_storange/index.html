@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <h1>Welcome to my page</h1>
+  <input id='name-input' type="text">
+  <script>
+    var input = document.getElementById('name-input');
+    
+    input.addEventListener('input', function(){
+    	console.log(input.value)
+    	localStorage.setItem('name', input.value)
+    });
+    //localStorage.setItem('name', 'Jimmy')
+    localStorage.setItem(0, 'rei') //key can be a number (unlike json)
+    localStorage.setItem(1, 'ich')
+
+  </script>
+</body>
+</html>

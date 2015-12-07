@@ -1,0 +1,8 @@
+<h2>About ...</h2>
+<p id="displayit"></p>
+<script>
+window.addEventListener('storage', function(e) { 
+  console.log(e.newValue); 
+  document.querySelector('#displayit').textContent = e.newValue
+});
+</script>

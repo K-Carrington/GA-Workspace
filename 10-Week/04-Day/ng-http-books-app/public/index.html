@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/pure.css">
+	<title>Books App</title>
+</head>
+
+<body ng-app="BooksApp">
+	<h1>	Welcome to my books app</h1>
+	<div ng-controller="BooksController as bc">
+      <button ng-click="bc.getBooks()">Show Books</button>
+      <button ng-click="bc.deleteAllBooks()">Delete All Books</button>
+      <ul ng-repeat="book in bc.allBooks">
+        <li>{{book.name}} <button ng-click="bc.getBookDetails(book)">Show Details</button>{{bc.book}}</li>
+      </ul>
+	</div>
+	<!-- <div ng-controller="BooksController as bc2"></div>  a 2nd instance of controller 
+	<li ng-repeat="BooksController as bc | orderBy:year" > -->
+	
+<script src="js/angular.js" ></script>
+<script src="js/main.js" ></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app='pokeApp'>
+<head>
+	<meta charset="utf-8">
+	<title>Poketo Monsutaa</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<!--iterpolation:-->
+ <!-- {{78+8}}
+<body  ng-controller="pokeController as poke">
+  
+  
+  <div class="">
+    <h5>{{poke.title}}</h5>
+  </div>
+  <ul id="pokemonList" ng-repeat="p in pokeCtrl.poke">
+    <li>{{p}}</li>
+  </ul>  -->
+
+  <!-- <script type="text/javascript">
+ /* from using jQuery y  $.ajax({
+      method: 'GET',
+      url: 'http://pokeapi.co/api/v1/pokedex/1'
+      ,success: function(allPokemon) {
+        console.log(allPokemon)
+      }
+    })  
+    </script>
+-->
+<body>
+  <div class="container" ng-controller="pokeController as pc">
+        <h1 class="jumbotron text-center">Pokedex</h1>
+        <div class="row">
+          <!-- Use bootstrap columns -->
+            <div class="col-xs-8">
+              <!-- Use ng-repeat to show all pokemon and add ng-click to display the pokemon clicked by calling the showPokemon passing a pokemon object-->
+                <button type="button" ng-repeat="p in pc.allPokemon" class="btn btn-info btn-xs" ng-click="pc.getOne(p.resource_uri)">
+                  {{p.name}} 
+                </button>
+            </div>
+            <div class="col-xs-4">
+              <!-- Use ng-show to display the panel if a pokemon is selected -->
+                <div class="panel" >
+                    <h2>{{pc.pman.name}}</h2>
+
+                    <img ng-src='http://pokeapi.co{{pc.img.image}}'  alt="{{pc.img.image}}" />
+                    <hr>
+                    <dl class="dl-horizontal">
+                        <dt>Weight</dt>
+                        <dd>{{pc.pman.weight}}</dd>
+                        <dt>Speed</dt>
+                        <dd>{{pc.pman.speed}}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Source in all the files you need -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
