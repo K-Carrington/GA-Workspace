@@ -30,6 +30,7 @@ apiRouter.get('/destroy-all', function(req,res){
 		if(err) throw err
 		res.json({message: 'All cars destroyed! Booooom!'})
 	})
+})
 
 apiRouter.route('/cars/:id')
 	.get(function(req,res){ 
@@ -39,7 +40,7 @@ apiRouter.route('/cars/:id')
 		})
 	})
 
-//TBD get, put & delete
+// get, put & delete for 1 car
 apiRouter.route('/cars/:id')
   .get(function(req,res){ 
 	  console.log("in edit get api.js")
@@ -50,36 +51,19 @@ apiRouter.route('/cars/:id')
   })
   .put(function(req,res){ //update a car
 		var newCar = new Car
-		findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err,....))
-		console.log('In update put api.js')
-		//newCar.make = req.body.make
-		//newCar.model = req.body.model
-		//newCar.year = req.body.year
-		//newCar.save(function(err, car){
+		findOneAndUpdate({_id: req.params.id}, req.body, function(err,car){
 			if(err) throw err
-			res.json({message: "Car Edited!", car: car})
+			Car.findById(req.params.id, function(err,updatedCar){
+				res.json(updatedCar)
+			})
 		})
+	})
 	.delete(function(req,res){ //delete a car
 		console.log('In delete api.js')
-	})
-
-apiRouter.route('/cars/:id/delete')
-	.get(function(req,res){ 
-		console.log("in delete get api.js")
-		Car.findById(req.params.id, function(err,car){
+		Car.findOneAndRemove({_id: req.params.id}, req.body, function(err,car){
 			if(err) throw err
-			res.json(car)
+			res.json({message:"car deleted!"})
 		})
 	})
-	
-
-    Car.findByIdAndRemove(req.car._id, function(err){
-      if(err) res.send(err);
-      console.log("Car deleted!");
-    })
-	})
-
-
-})
 
 module.exports = apiRouter
