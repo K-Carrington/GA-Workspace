@@ -1,0 +1,38 @@
+<!-- todo-list.html -->
+
+<head>
+  <title>Todo List</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Todo List</h1>
+    </header>
+    {{>todoList}}
+  </div>
+</body>
+
+<template name="todoList">
+	<hr>
+  <div>
+    {{>loginButtons}}
+  </div>
+  <hr>
+  <form>
+  	<input name="taskForm" placeholder="New Task" type="text" />
+  </form>
+
+  <ul>
+    {{#each tasks}}
+      <!--<li>{{this.text}}</li>-->
+      <li class="{{#if this.checked}}checked{{/if}}">
+        <button class="delete" data-action="delete-task">&times;</button>
+
+        <input checked="{{this.checked}}" data-action="complete-task" class="toggle-checked" type="checkbox"/>
+
+        <span class="text">{{text}}</span>
+      </li>
+    {{/each}}
+  </ul>
+</template>

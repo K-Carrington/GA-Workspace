@@ -1,0 +1,29 @@
+//Ruby
+def splitTheBill x
+  tot = 0
+  x.each do |i,j|
+    tot+=j
+  end
+  avg = tot/x.length.to_f
+  x.each do
+    res.push(i,j-avg)  #?
+  end
+  return res #?
+end
+
+//JS
+function splitTheBill(x) {
+    //code away...
+  var keys = Object.keys(x);
+  var sum = 0;
+  //for (key in x {...}
+  for (var i=0; i<keys.length; i++) {
+    sum += x[keys[i]];
+  }
+  var avg = sum / keys.length;
+  var res = {};
+  for (i=0; i<keys.length; i++) {
+    res[keys[i]] = x[keys[i]] - avg;
+  }
+  return res;
+}

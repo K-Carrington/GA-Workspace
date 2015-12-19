@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="zooApp">
+<head>
+	<title>The Zoo App</title>
+    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.js"></script>
+
+	<script type="text/javascript" src="public/js/app.js"></script>
+</head>
+<body  ng-controller="zooController as zooCtrl">
+  <div class="container" >
+  	{{zooCtrl.name}}
+  	<ul>
+  		<li ng-repeat='animal in zooCtrl.animals' ng-show="animal.visible">{{animal.name}} the {{animal.type}}<button ng-click="zooCtrl.changeVisibility(animal)">hide</button></li>
+  	</ul>
+  </div>
+</body>
+</html>

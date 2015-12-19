@@ -1,0 +1,11 @@
+<ion-view view-title="Playlists">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.resource_uri.substring(15,playlist.resource_uri.lastIndexOf('/'))}}">
+       <img ng-src="http://pokeapi.co/media/img/{{playlist.resource_uri.substring(15,playlist.resource_uri.lastIndexOf('/'))}}.png" alt="" />
+       <i class="icon ion-chevron-right icon-accessory"></i>
+       <h2>{{playlist.name.toUpperCase()}}</h2>
+     </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
